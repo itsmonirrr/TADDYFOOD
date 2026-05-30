@@ -53,16 +53,35 @@ export default function AdminLoginPage() {
     setIsLoading(true);
 
     try {
+      // 1. First test if Supabase connection works by logging all admin_accounts
+      const { data: allAdmins, error: testError } = await supabase
+        .from('admin_accounts')
+        .select('*');
+      console.log('All admins:', allAdmins, 'Error:', testError);
+
+      if (testError) {
+        setIsLoading(false);
+        setErrorMsg("Database connection failed: " + testError.message);
+        return;
+      }
+
+      // 2. Then check the exact query
       const { data, error } = await supabase
         .from('admin_accounts')
         .select('*')
         .eq('username', adminId.trim().toLowerCase())
         .eq('password', password)
-        .eq('status', 'active')
         .maybeSingle();
+      console.log('Login result:', data, 'Error:', error);
 
       setIsLoading(false);
 
+      if (error) {
+        setErrorMsg(error.message);
+        return;
+      }
+
+      // 3. Show the error message on screen if data is null
       if (data) {
         localStorage.setItem('adminUser', JSON.stringify(data));
         
@@ -80,11 +99,11 @@ export default function AdminLoginPage() {
 
         router.push('/admin/dashboard');
       } else {
-        setErrorMsg('Invalid credentials');
+        setErrorMsg('No matching account found');
       }
     } catch (err: any) {
       setIsLoading(false);
-      setErrorMsg('Invalid credentials');
+      setErrorMsg(err.message || 'No matching account found');
     }
   };
 
