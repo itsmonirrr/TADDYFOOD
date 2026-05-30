@@ -53,47 +53,41 @@ export default function AdminLoginPage() {
     setIsLoading(true);
 
     try {
-      // 1. First test if Supabase connection works by logging all admin_accounts
-      const { data: allAdmins, error: testError } = await supabase
-        .from('admin_accounts')
-        .select('*');
-      console.log('All admins:', allAdmins, 'Error:', testError);
+      const res = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: adminId.trim().toLowerCase(),
+          password: password
+        })
+      });
 
-      if (testError) {
-        setIsLoading(false);
-        setErrorMsg("Database connection failed: " + testError.message);
-        return;
-      }
-
-      // 2. Then check the exact query
-      const { data, error } = await supabase
-        .from('admin_accounts')
-        .select('*')
-        .eq('username', adminId.trim().toLowerCase())
-        .eq('password', password)
-        .maybeSingle();
-      console.log('Login result:', data, 'Error:', error);
-
+      const data = await res.json();
       setIsLoading(false);
 
-      if (error) {
-        setErrorMsg(error.message);
+      if (!res.ok) {
+        // Show the full detailed error message on screen
+        const detailedError = data.error || 'Login failed';
+        const codeMsg = data.code ? ` (Code: ${data.code})` : '';
+        const detailsMsg = data.details ? ` - Details: ${data.details}` : '';
+        setErrorMsg(`${detailedError}${codeMsg}${detailsMsg}`);
         return;
       }
 
-      // 3. Show the error message on screen if data is null
-      if (data) {
-        localStorage.setItem('adminUser', JSON.stringify(data));
+      const adminData = data.admin;
+
+      if (adminData) {
+        localStorage.setItem('adminUser', JSON.stringify(adminData));
         
         // Also save tf_active_user to preserve background AuthContext hydration
         const mappedAdmin = {
-          id: data.id,
-          name: data.full_name,
-          email: `${data.username}@teddyfood.com`,
-          role: data.role,
+          id: adminData.id,
+          name: adminData.full_name,
+          email: `${adminData.username}@teddyfood.com`,
+          role: adminData.role,
           phone: '01112345678',
           address: 'TEDDYFOOD Head Office, Gulshan 1, Dhaka',
-          status: data.status === 'active' ? 'Active' : 'Banned',
+          status: adminData.status === 'active' ? 'Active' : 'Banned',
         };
         localStorage.setItem('tf_active_user', JSON.stringify(mappedAdmin));
 
@@ -103,7 +97,7 @@ export default function AdminLoginPage() {
       }
     } catch (err: any) {
       setIsLoading(false);
-      setErrorMsg(err.message || 'No matching account found');
+      setErrorMsg(err.message || 'An error occurred during terminal clearance authorization.');
     }
   };
 
