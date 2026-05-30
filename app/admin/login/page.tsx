@@ -2,10 +2,13 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 import { Lock, Eye, EyeOff, Shield, AlertCircle, ArrowLeft, CheckCircle2, Key, Mail } from 'lucide-react';
 
 export default function AdminLoginPage() {
+  const router = useRouter();
+  
   // General forms state
   const [step, setStep] = useState<'login' | 'forgot' | 'otp' | 'newPassword' | 'success'>('login');
   
@@ -50,44 +53,38 @@ export default function AdminLoginPage() {
     setIsLoading(true);
 
     try {
-      // Query admin_accounts checking matching username and password
-      const { data: adminUser, error: queryError } = await supabase
+      const { data, error } = await supabase
         .from('admin_accounts')
         .select('*')
         .eq('username', adminId.trim().toLowerCase())
         .eq('password', password)
-        .single();
+        .eq('status', 'active')
+        .maybeSingle();
 
       setIsLoading(false);
 
-      if (queryError || !adminUser) {
-        setErrorMsg("Invalid username or password.");
-        return;
+      if (data) {
+        localStorage.setItem('adminUser', JSON.stringify(data));
+        
+        // Also save tf_active_user to preserve background AuthContext hydration
+        const mappedAdmin = {
+          id: data.id,
+          name: data.full_name,
+          email: `${data.username}@teddyfood.com`,
+          role: data.role,
+          phone: '01112345678',
+          address: 'TEDDYFOOD Head Office, Gulshan 1, Dhaka',
+          status: data.status === 'active' ? 'Active' : 'Banned',
+        };
+        localStorage.setItem('tf_active_user', JSON.stringify(mappedAdmin));
+
+        router.push('/admin/dashboard');
+      } else {
+        setErrorMsg('Invalid credentials');
       }
-
-      if (adminUser.status === 'banned') {
-        setErrorMsg("Your administrator account has been disabled.");
-        return;
-      }
-
-      // Map DB admin coordinates to session user
-      const mappedAdmin = {
-        id: adminUser.id,
-        name: adminUser.full_name,
-        email: `${adminUser.username}@teddyfood.com`,
-        role: adminUser.role,
-        phone: '01112345678',
-        address: 'TEDDYFOOD Head Office, Gulshan 1, Dhaka',
-        status: adminUser.status === 'active' ? 'Active' : 'Banned',
-      };
-
-      localStorage.setItem('tf_active_user', JSON.stringify(mappedAdmin));
-      
-      // Navigate to dashboard
-      window.location.href = '/admin/dashboard';
     } catch (err: any) {
       setIsLoading(false);
-      setErrorMsg(err.message || "Admin clearance authorization failed.");
+      setErrorMsg('Invalid credentials');
     }
   };
 
@@ -587,16 +584,7 @@ export default function AdminLoginPage() {
           </div>
         )}
 
-        {/* Credentials box */}
-        {step === 'login' && (
-          <div className="mt-6 p-4 rounded-3xl bg-slate-950/50 border border-slate-800/80 text-[10px] text-slate-500 font-semibold">
-            🔑 <strong>Default Admin Clearance:</strong>
-            <div className="flex justify-between mt-1 text-slate-400 font-mono">
-              <span>User ID: <strong className="select-all">admin</strong></span>
-              <span>Pass: <strong>123456</strong></span>
-            </div>
-          </div>
-        )}
+
 
       </div>
     </div>
