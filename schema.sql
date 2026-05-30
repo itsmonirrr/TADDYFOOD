@@ -237,19 +237,7 @@ CREATE TABLE IF NOT EXISTS admin_accounts (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
-ALTER TABLE admin_accounts ENABLE ROW LEVEL SECURITY;
-
--- Allow public read access to admin_accounts (for verification)
-CREATE POLICY "Allow public read access to admin accounts" 
-  ON admin_accounts FOR SELECT USING (true);
-
--- Allow admins to manage admin_accounts
-CREATE POLICY "Allow admins full access to admin accounts" 
-  ON admin_accounts FOR ALL USING (
-    EXISTS (
-      SELECT 1 FROM admin_accounts WHERE id = auth.uid() AND role = 'admin'
-    )
-  );
+ALTER TABLE admin_accounts DISABLE ROW LEVEL SECURITY;
 
 -- Enable Replication for Realtime order tracking
 alter publication supabase_realtime add table orders;
@@ -264,20 +252,7 @@ CREATE TABLE IF NOT EXISTS admin_otp (
   created_at TIMESTAMP DEFAULT NOW()
 );
 
--- Enable Row Level Security (RLS) on admin_otp
-ALTER TABLE admin_otp ENABLE ROW LEVEL SECURITY;
+-- Disable Row Level Security (RLS) on admin_otp
+ALTER TABLE admin_otp DISABLE ROW LEVEL SECURITY;
 
--- Allow public operations for the anonymous OTP verification flow
-CREATE POLICY "Allow public select on admin_otp" 
-  ON admin_otp FOR SELECT USING (true);
-
-CREATE POLICY "Allow public insert on admin_otp" 
-  ON admin_otp FOR INSERT WITH CHECK (true);
-
-CREATE POLICY "Allow public update on admin_otp" 
-  ON admin_otp FOR UPDATE USING (true);
-
--- Allow public update on admin_accounts specifically for password reset
-CREATE POLICY "Allow public update on admin accounts" 
-  ON admin_accounts FOR UPDATE USING (true);
 

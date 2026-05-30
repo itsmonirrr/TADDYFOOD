@@ -50,19 +50,23 @@ export default function AdminLoginPage() {
     setIsLoading(true);
 
     try {
-      // FIXED QUERY: Check with username column directly and status active
+      // Query admin_accounts checking matching username and password
       const { data: adminUser, error: queryError } = await supabase
         .from('admin_accounts')
         .select('*')
         .eq('username', adminId.trim().toLowerCase())
         .eq('password', password)
-        .eq('status', 'active')
         .single();
 
       setIsLoading(false);
 
       if (queryError || !adminUser) {
-        setErrorMsg("Invalid credentials or account clearance has been disabled.");
+        setErrorMsg("Invalid username or password.");
+        return;
+      }
+
+      if (adminUser.status === 'banned') {
+        setErrorMsg("Your administrator account has been disabled.");
         return;
       }
 
