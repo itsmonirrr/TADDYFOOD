@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TEDDYFOOD - Admin Panel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#85fd6d",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#69df54",
+                        "primary-container": "#df0e84",
+                        "surface": "#fcf9f8",
+                        "on-tertiary-fixed-variant": "#035300",
+                        "surface-bright": "#fcf9f8",
+                        "on-primary-fixed-variant": "#8d0051",
+                        "on-tertiary-container": "#f8ffef",
+                        "outline-variant": "#e1bdc8",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e5e2e1",
+                        "inverse-surface": "#313030",
+                        "on-secondary-fixed": "#21191f",
+                        "primary": "#b30069",
+                        "secondary": "#665b62",
+                        "secondary-fixed": "#eddfe6",
+                        "surface-container": "#f0eded",
+                        "surface-dim": "#dcd9d9",
+                        "on-tertiary-fixed": "#012200",
+                        "surface-tint": "#b8006c",
+                        "background": "#fcf9f8",
+                        "primary-fixed-dim": "#ffb0cc",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#594048",
+                        "on-surface": "#1c1b1b",
+                        "on-background": "#1c1b1b",
+                        "tertiary": "#046c00",
+                        "on-secondary-fixed-variant": "#4d444a",
+                        "outline": "#8d6f79",
+                        "secondary-container": "#eadce4",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#6a6066",
+                        "surface-container-high": "#eae7e7",
+                        "surface-container-low": "#f6f3f2",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#3e0021",
+                        "tertiary-container": "#068800",
+                        "inverse-primary": "#ffb0cc",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#fffbff",
+                        "surface-container-highest": "#e5e2e1",
+                        "primary-fixed": "#ffd9e4",
+                        "secondary-fixed-dim": "#d0c3ca"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "xxl": "48px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "label-sm": ["Be Vietnam Pro"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "headline-md": ["Be Vietnam Pro"],
+                        "headline-lg-mobile": ["Be Vietnam Pro"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "headline-lg": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        .glass-card {
+            background: rgba(49, 48, 48, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.3); }
+    </style>
+</head>
+<body class="bg-inverse-surface text-surface-container-lowest font-body-md antialiased min-h-screen flex overflow-hidden">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full z-40 flex flex-col pt-20 pb-md bg-inverse-surface shadow-xl shadow-black/20 w-64 border-r border-white/5 transition-transform duration-300 transform -translate-x-full md:translate-x-0" id="sidebar">
+<div class="px-gutter mb-xl flex items-center justify-between">
+<div>
+<h1 class="text-headline-md font-display-lg font-bold text-primary-fixed">Admin Panel</h1>
+<p class="text-label-sm font-label-sm text-surface-variant/70">TEDDYFOOD Management</p>
+</div>
+<button class="md:hidden text-surface-container-lowest p-2" id="closeSidebar">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar px-sm">
+<ul class="space-y-sm">
+<li>
+<a class="flex items-center px-4 py-3 bg-primary-container text-on-primary-container rounded-lg font-bold mx-2 scale-98 transition-all hover:bg-primary-container/90" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+                        Dashboard
+                    </a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 text-surface-variant hover:bg-white/10 rounded-lg mx-2 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">storefront</span>
+                        Restaurants
+                    </a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 text-surface-variant hover:bg-white/10 rounded-lg mx-2 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">group</span>
+                        Users
+                    </a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 text-surface-variant hover:bg-white/10 rounded-lg mx-2 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">receipt_long</span>
+                        Orders
+                    </a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 text-surface-variant hover:bg-white/10 rounded-lg mx-2 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">local_shipping</span>
+                        Delivery Management
+                    </a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 text-surface-variant hover:bg-white/10 rounded-lg mx-2 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">analytics</span>
+                        Analytics
+                    </a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 text-surface-variant hover:bg-white/10 rounded-lg mx-2 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+                        Settings
+                    </a>
+</li>
+</ul>
+</div>
+<div class="mt-auto px-sm pt-4 border-t border-white/10">
+<button class="w-full mb-4 py-3 px-4 bg-gradient-to-r from-primary to-primary-fixed-dim text-on-primary font-label-md rounded-full shadow-lg shadow-primary/20 hover:scale-105 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span> Add New Item
+            </button>
+<ul class="space-y-sm">
+<li>
+<a class="flex items-center px-4 py-2 text-surface-variant hover:bg-white/10 rounded-lg mx-2 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">logout</span>
+                        Logout
+                    </a>
+</li>
+<li>
+<a class="flex items-center px-4 py-2 text-surface-variant hover:bg-white/10 rounded-lg mx-2 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">contact_support</span>
+                        Support
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 ml-0 md:ml-64 h-screen overflow-y-auto custom-scrollbar relative">
+<!-- Top Bar Mobile -->
+<div class="md:hidden sticky top-0 z-30 bg-inverse-surface/80 backdrop-blur-md border-b border-white/10 p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button class="p-2 text-surface-container-lowest" id="openSidebar">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="text-headline-md font-display-lg font-bold text-primary-fixed text-lg">TEDDYFOOD ADMIN</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest overflow-hidden border border-white/20">
+<img alt="Admin Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-6yztHkgbYqCQauBmdVqS7M1hiTAUF5pWyNSKdzb-9B8QuE99baT0euRFrdIL5W7UzxRKIMo5F-M9LkCmmSTcR7m48ARR9d5j6oq7jQGnYarlkFfYK7GUY9lhN5leL9-7aiiAWY7HCRo8Fd15glJb5FlGSgv5zzChWQYAqQr0KByWtqlLas3GpUKDTzhqmWZsPUSX7--7dJriIldMQxHp5CVRVj0Rpi4mwrUmm7HR5F2ZSUe5sQTkiyZiFr8i1IPoj11QTgZCIHw"/>
+</div>
+</div>
+<div class="p-gutter max-w-container-max mx-auto space-y-xl">
+<!-- Header section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mt-8 md:mt-0">
+<div>
+<h2 class="text-display-lg font-display-lg text-surface-container-lowest">Dashboard Overview</h2>
+<p class="text-body-lg text-surface-variant/70 mt-2">Welcome back, Admin. Here's what's happening today.</p>
+</div>
+<div class="flex items-center gap-4 hidden md:flex">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-surface-variant/50">search</span>
+<input class="bg-white/5 border border-white/10 rounded-full py-2 pl-10 pr-4 text-sm text-surface-container-lowest focus:outline-none focus:border-primary-fixed focus:bg-white/10 transition-all w-64 placeholder:text-surface-variant/40" placeholder="Search across panel..." type="text"/>
+</div>
+<button class="relative p-2 rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2.5 h-2.5 bg-primary-fixed rounded-full border-2 border-inverse-surface"></span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest overflow-hidden border-2 border-primary-fixed/50 cursor-pointer hover:border-primary-fixed transition-colors">
+<img alt="Admin Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6ZETsYVIm6F9tHHR3Ax_dVePH_Gz9Q28UR7iTf8ceiZUu2k6jk7SRYRJ7xw0i42-Y1X93ej7WSFWeVT1KaA8a2UrKyV4NF0gl_pzW5xIihf6oOoYlcSnR9S6VDIAL1S3zy2WVsWwrdPy-Ldd_wFHOsJHHDlEkm_60fcZjEAsccZbbEmOMGV-y5K8GAVdEo81w-_xb31T-0wTQp_jvfo8Ny7zdHVxP7CK0QxH0wxgcT2wQcamj14vt00rMf-Ige7lCJwrnnMywjpM"/>
+</div>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
+<!-- Stat Card 1 -->
+<div class="glass-card rounded-xl p-lg relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary/20 rounded-full blur-2xl group-hover:bg-primary/30 transition-colors"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div>
+<p class="text-label-sm text-surface-variant/70 uppercase tracking-wider">Total Orders</p>
+<h3 class="text-headline-lg font-headline-lg mt-1">1,248</h3>
+</div>
+<div class="p-3 bg-white/5 rounded-lg text-primary-fixed">
+<span class="material-symbols-outlined">shopping_bag</span>
+</div>
+</div>
+<div class="flex items-center text-sm relative z-10">
+<span class="text-tertiary-fixed-dim flex items-center font-medium"><span class="material-symbols-outlined text-sm mr-1">trending_up</span> +12.5%</span>
+<span class="text-surface-variant/50 ml-2">from last week</span>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="glass-card rounded-xl p-lg relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary-fixed-dim/20 rounded-full blur-2xl group-hover:bg-primary-fixed-dim/30 transition-colors"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div>
+<p class="text-label-sm text-surface-variant/70 uppercase tracking-wider">Total Revenue</p>
+<h3 class="text-headline-lg font-headline-lg mt-1">$45.2K</h3>
+</div>
+<div class="p-3 bg-white/5 rounded-lg text-primary-fixed-dim">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+</div>
+<div class="flex items-center text-sm relative z-10">
+<span class="text-tertiary-fixed-dim flex items-center font-medium"><span class="material-symbols-outlined text-sm mr-1">trending_up</span> +8.2%</span>
+<span class="text-surface-variant/50 ml-2">from last week</span>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="glass-card rounded-xl p-lg relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-tertiary-fixed-dim/20 rounded-full blur-2xl group-hover:bg-tertiary-fixed-dim/30 transition-colors"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div>
+<p class="text-label-sm text-surface-variant/70 uppercase tracking-wider">Active Restaurants</p>
+<h3 class="text-headline-lg font-headline-lg mt-1">342</h3>
+</div>
+<div class="p-3 bg-white/5 rounded-lg text-tertiary-fixed-dim">
+<span class="material-symbols-outlined">storefront</span>
+</div>
+</div>
+<div class="flex items-center text-sm relative z-10">
+<span class="text-tertiary-fixed-dim flex items-center font-medium"><span class="material-symbols-outlined text-sm mr-1">trending_up</span> +4</span>
+<span class="text-surface-variant/50 ml-2">new this week</span>
+</div>
+</div>
+<!-- Stat Card 4 -->
+<div class="glass-card rounded-xl p-lg relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-white/10 rounded-full blur-2xl group-hover:bg-white/20 transition-colors"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div>
+<p class="text-label-sm text-surface-variant/70 uppercase tracking-wider">Total Users</p>
+<h3 class="text-headline-lg font-headline-lg mt-1">12.5K</h3>
+</div>
+<div class="p-3 bg-white/5 rounded-lg text-surface-container-lowest">
+<span class="material-symbols-outlined">group</span>
+</div>
+</div>
+<div class="flex items-center text-sm relative z-10">
+<span class="text-tertiary-fixed-dim flex items-center font-medium"><span class="material-symbols-outlined text-sm mr-1">trending_up</span> +156</span>
+<span class="text-surface-variant/50 ml-2">new users</span>
+</div>
+</div>
+</div>
+<!-- Main Dashboard Area (Charts & Tables) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Chart Area (Placeholder) -->
+<div class="glass-card rounded-xl p-lg lg:col-span-2 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-headline-md font-headline-md">Revenue Overview</h3>
+<select class="bg-white/5 border border-white/10 rounded-lg text-sm text-surface-container-lowest py-1 px-3 focus:outline-none focus:border-primary-fixed appearance-none">
+<option value="7">Last 7 Days</option>
+<option value="30">Last 30 Days</option>
+<option value="90">Last 3 Months</option>
+</select>
+</div>
+<div class="flex-1 w-full bg-white/5 rounded-lg border border-white/5 flex items-end justify-between p-4 gap-2 relative h-64">
+<!-- Mock Bar Chart -->
+<div class="w-full flex justify-between items-end h-full px-2">
+<div class="w-1/12 bg-white/10 hover:bg-primary/50 transition-colors rounded-t-sm h-1/3 relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs opacity-0 group-hover:opacity-100 transition-opacity">$2k</span></div>
+<div class="w-1/12 bg-white/10 hover:bg-primary/50 transition-colors rounded-t-sm h-1/2 relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs opacity-0 group-hover:opacity-100 transition-opacity">$3k</span></div>
+<div class="w-1/12 bg-white/10 hover:bg-primary/50 transition-colors rounded-t-sm h-2/3 relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs opacity-0 group-hover:opacity-100 transition-opacity">$4.5k</span></div>
+<div class="w-1/12 bg-white/10 hover:bg-primary/50 transition-colors rounded-t-sm h-1/4 relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs opacity-0 group-hover:opacity-100 transition-opacity">$1.5k</span></div>
+<div class="w-1/12 bg-primary hover:bg-primary-fixed transition-colors rounded-t-sm h-4/5 relative group shadow-[0_0_15px_rgba(223,14,132,0.4)]"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs opacity-0 group-hover:opacity-100 transition-opacity">$6.2k</span></div>
+<div class="w-1/12 bg-white/10 hover:bg-primary/50 transition-colors rounded-t-sm h-3/5 relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs opacity-0 group-hover:opacity-100 transition-opacity">$4k</span></div>
+<div class="w-1/12 bg-white/10 hover:bg-primary/50 transition-colors rounded-t-sm h-1/2 relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs opacity-0 group-hover:opacity-100 transition-opacity">$3.2k</span></div>
+</div>
+</div>
+</div>
+<!-- Approval Requests -->
+<div class="glass-card rounded-xl p-lg flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-headline-md font-headline-md">Approval Requests</h3>
+<a class="text-sm text-primary-fixed hover:underline" href="#">View All</a>
+</div>
+<div class="space-y-4 flex-1 overflow-y-auto custom-scrollbar pr-2">
+<!-- Request Item 1 -->
+<div class="flex items-center gap-4 p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors border border-white/5">
+<div class="w-12 h-12 rounded-lg bg-surface-variant overflow-hidden shrink-0">
+<img alt="Restaurant Image" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC9Q0HDzkG_MwRlFybT42vmxoDtH9H-I1iRDl9jrBQcAGvMisZfpq3LkampzdGFo_LD54N1cF2Hdin54NsbSll3bm9cbU61faxikj3CJxuknEJ6RlK-baec7nqoPjDZehyVrGLLIrAXq1A6przXSznCWK-qcdTRU7eYSCL7GqUH1qkNJSVgEnoL3wBUQ5gG4vjsSPfCAfFj9-WHKN2TXSTULgLPMhTP9JVVu-tMgwPB_vE6p1Zv5Gse7g3FGDuZ_GkkBrdaVGS11U"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-label-md truncate text-surface-container-lowest">Burger Haven</h4>
+<p class="text-xs text-surface-variant/70 truncate">Fast Food, American</p>
+</div>
+<div class="flex gap-2">
+<button class="p-1.5 rounded-md bg-tertiary-fixed/20 text-tertiary-fixed hover:bg-tertiary-fixed/30 transition-colors" title="Approve">
+<span class="material-symbols-outlined text-sm">check</span>
+</button>
+<button class="p-1.5 rounded-md bg-error/20 text-error hover:bg-error/30 transition-colors" title="Reject">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</div>
+<!-- Request Item 2 -->
+<div class="flex items-center gap-4 p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors border border-white/5">
+<div class="w-12 h-12 rounded-lg bg-surface-variant overflow-hidden shrink-0">
+<img alt="Restaurant Image" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-ZEri0p23yGaFrtlc06PMQniQyF0HHvAnhG3fkBknPetaVkdDPQtyZ2PMxEMUyXWHZGDpXJu5o2bcc6hR8zYWkr_DBr5RmiRIRzA2DJY-BW3poB99KDBDkHph6hArgroU2QhNgk2KnNB3r4YxR1D7OigBMH5Qdiwx6qQanSW0L9zYz3zx9EFfeRUkfefopARS5VtsF-C-Cz4_4WqkS6yzLL0xKOHliGUbfE8tUI6D3D7mq_VSeGpnLmpxF0SQMf-Z34qjNB4VvDM"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-label-md truncate text-surface-container-lowest">Sushi Zen</h4>
+<p class="text-xs text-surface-variant/70 truncate">Japanese, Sushi</p>
+</div>
+<div class="flex gap-2">
+<button class="p-1.5 rounded-md bg-tertiary-fixed/20 text-tertiary-fixed hover:bg-tertiary-fixed/30 transition-colors" title="Approve">
+<span class="material-symbols-outlined text-sm">check</span>
+</button>
+<button class="p-1.5 rounded-md bg-error/20 text-error hover:bg-error/30 transition-colors" title="Reject">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</div>
+<!-- Request Item 3 -->
+<div class="flex items-center gap-4 p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors border border-white/5">
+<div class="w-12 h-12 rounded-lg bg-surface-variant overflow-hidden shrink-0">
+<img alt="Restaurant Image" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFR17nS-OqjeoqN9jA5O9yOJgKHreRJ8B3uEnYDJlsJnoDtUSllyBKA9euRNndd9YrOW2VT365bZOM83QQpwfsu9ecNUskPam0QCZMHF3wif9hTNQrpExzLV2vRfB6rom4av2z8dc0OCRPQ9NBdcXsq0rFrNpFGnRcpUYeT0vEGdTyXjfJ0OyjFpsTJJ-YxWj-UHkl5pQyGxX2pJy9gHw_OGOnuHmncWY6QXFD8XnVrxg5XaW2Hkm-Fli4-ufM4SsZRzN-IlPFGXs"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-label-md truncate text-surface-container-lowest">Pasta Bella</h4>
+<p class="text-xs text-surface-variant/70 truncate">Italian, Pasta</p>
+</div>
+<div class="flex gap-2">
+<button class="p-1.5 rounded-md bg-tertiary-fixed/20 text-tertiary-fixed hover:bg-tertiary-fixed/30 transition-colors" title="Approve">
+<span class="material-symbols-outlined text-sm">check</span>
+</button>
+<button class="p-1.5 rounded-md bg-error/20 text-error hover:bg-error/30 transition-colors" title="Reject">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Orders Table -->
+<div class="glass-card rounded-xl overflow-hidden pb-4">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center p-lg border-b border-white/10 gap-4">
+<h3 class="text-headline-md font-headline-md">Recent Orders</h3>
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<div class="relative flex-1 sm:flex-none">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-surface-variant/50 text-sm">search</span>
+<input class="w-full bg-white/5 border border-white/10 rounded-lg py-1.5 pl-9 pr-4 text-sm text-surface-container-lowest focus:outline-none focus:border-primary-fixed focus:bg-white/10 transition-all placeholder:text-surface-variant/40" placeholder="Search orders..." type="text"/>
+</div>
+<button class="p-1.5 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-white/5 text-label-sm text-surface-variant/70 uppercase tracking-wider">
+<th class="p-4 font-medium whitespace-nowrap">Order ID</th>
+<th class="p-4 font-medium whitespace-nowrap">Customer</th>
+<th class="p-4 font-medium whitespace-nowrap">Restaurant</th>
+<th class="p-4 font-medium whitespace-nowrap">Amount</th>
+<th class="p-4 font-medium whitespace-nowrap">Status</th>
+<th class="p-4 font-medium text-right whitespace-nowrap">Action</th>
+</tr>
+</thead>
+<tbody class="text-sm divide-y divide-white/5">
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="p-4 font-mono text-primary-fixed/80 group-hover:text-primary-fixed">#ORD-8924</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant overflow-hidden"><img alt="User" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU_BdfJFtgGCpvuDjLJg-R25imYzNeftRmGXVNIC9DFy37HurftXD4R3tguZTbzFSQtqBWYt5two-CN2t0V3OVf-7RRy5eHfxMaOhqDcQDPGbG64V6jf02E8FoqQxF3b-FnYvakcqOYAg7z-8uA-9Sx6uNii0M8IVI-O9u_yMm2db49twBDYTO1KGLbRMnhROw_ossCaSO7s4GKEbdvl7tqN_MLsMIuWvNo6MRKEnP9u8R6_iDD6KmExdHFOEhQRpkolPkaYkHP5Q"/></div>
+<span>Sarah Jenkins</span>
+</div>
+</td>
+<td class="p-4 text-surface-variant/80">Spicy Thai Express</td>
+<td class="p-4 font-medium">$42.50</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-tertiary-fixed/10 text-tertiary-fixed border border-tertiary-fixed/20">
+                                        Delivered
+                                    </span>
+</td>
+<td class="p-4 text-right">
+<button class="text-surface-variant/70 hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="p-4 font-mono text-primary-fixed/80 group-hover:text-primary-fixed">#ORD-8923</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant overflow-hidden"><img alt="User" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv0ngcfj2LguC0QAUFtO4LUSEOw6sXUdGwvi3MVQJ4tVqjBY3GHgRo65F-LaTSyErfxyYkhiaxHlNePiag_WKQ7IcvNaM14tNT96c1c_ox85D_rHvjg-Zcks7D0F1zd94VrpW7xUy1PTvpuj6hla08dFXn-va9ZbBdGJzQRIQABv27UVrGzK0EPfqSRFDLohS9GR7kXM7CabhTetzG0ZxCNikeRI9h6Fh1fllQpU7LhmZNLvapT9KWQLpMfAgC8Ie6EP6I79rK-Q8"/></div>
+<span>Mike Peterson</span>
+</div>
+</td>
+<td class="p-4 text-surface-variant/80">Burger Haven</td>
+<td class="p-4 font-medium">$28.00</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary-fixed-dim border border-primary/20">
+                                        Preparing
+                                    </span>
+</td>
+<td class="p-4 text-right">
+<button class="text-surface-variant/70 hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="p-4 font-mono text-primary-fixed/80 group-hover:text-primary-fixed">#ORD-8922</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant overflow-hidden"><img alt="User" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm4jv0Hw7lWA6Aacoq-dzDc1mH3aEB5sPNkANUPSF8HhAtEhwpgfVzXUo134PslEqkZTfrsp41Mt-VzVRn9Qxou_NZzdW2LlatUXTCzfrb6edtYmgx9_EEsrqPjx4bAWa_fkU7xcoy8auE6dxZLZRH3awF6m5VCbxE2OvUvmgy2wQ9MvHyeGOfngDrmezS8HS-Uy5V3522md2-UaxiiT8EDuJ65uBuGiiDoD8TkH19Wh3kkF5jesicAsCTQvHNYTgTaxjgPqgTKTY"/></div>
+<span>Elena Rodriguez</span>
+</div>
+</td>
+<td class="p-4 text-surface-variant/80">Green Leaf Salads</td>
+<td class="p-4 font-medium">$18.90</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-white/10 text-surface-container-lowest border border-white/20">
+                                        On the way
+                                    </span>
+</td>
+<td class="p-4 text-right">
+<button class="text-surface-variant/70 hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="p-4 font-mono text-primary-fixed/80 group-hover:text-primary-fixed">#ORD-8921</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant overflow-hidden"><img alt="User" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVxgyveyq5FEnb1ByJUNOWJMDJNrEmhqnlDYqKZ8l6Jp-OULEAD-QSsul67AMMBrDceiDYCYwPVxKJyGNlG4bx-wQPEnC4tJQmG7dG4msMYsYVc5p3y788KhQbOobSt0_jsc70ir-WJNK5CpfLXAQiBcZVSdLFCs0vxr6UoE1OcaGboCiqgayOck5kM_fX77ZhapKG30msZV280rL8gLvEScEQSt0txBkFExPDK41gFnMLHakIqrd4ck1aE4rVKfOUxkd53NF5uj8"/></div>
+<span>David Chen</span>
+</div>
+</td>
+<td class="p-4 text-surface-variant/80">Neon Sushi</td>
+<td class="p-4 font-medium">$65.20</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-error/10 text-error border border-error/20">
+                                        Cancelled
+                                    </span>
+</td>
+<td class="p-4 text-right">
+<button class="text-surface-variant/70 hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Footer Padding -->
+<div class="h-8"></div>
+</div>
+</main>
+<script>
+        // Simple sidebar toggle for mobile
+        const sidebar = document.getElementById('sidebar');
+        const openBtn = document.getElementById('openSidebar');
+        const closeBtn = document.getElementById('closeSidebar');
+
+        openBtn.addEventListener('click', () => {
+            sidebar.classList.remove('-translate-x-full');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+        });
+    </script>
+</body></html>

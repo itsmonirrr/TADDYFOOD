@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TEDDYFOOD - Log In</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#85fd6d",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed-dim": "#69df54",
+                      "primary-container": "#df0e84",
+                      "surface": "#fcf9f8",
+                      "on-tertiary-fixed-variant": "#035300",
+                      "surface-bright": "#fcf9f8",
+                      "on-primary-fixed-variant": "#8d0051",
+                      "on-tertiary-container": "#f8ffef",
+                      "outline-variant": "#e1bdc8",
+                      "error-container": "#ffdad6",
+                      "surface-variant": "#e5e2e1",
+                      "inverse-surface": "#313030",
+                      "on-secondary-fixed": "#21191f",
+                      "primary": "#b30069",
+                      "secondary": "#665b62",
+                      "secondary-fixed": "#eddfe6",
+                      "surface-container": "#f0eded",
+                      "surface-dim": "#dcd9d9",
+                      "on-tertiary-fixed": "#012200",
+                      "surface-tint": "#b8006c",
+                      "background": "#fcf9f8",
+                      "primary-fixed-dim": "#ffb0cc",
+                      "on-secondary": "#ffffff",
+                      "on-surface-variant": "#594048",
+                      "on-surface": "#1c1b1b",
+                      "on-background": "#1c1b1b",
+                      "tertiary": "#046c00",
+                      "on-secondary-fixed-variant": "#4d444a",
+                      "outline": "#8d6f79",
+                      "secondary-container": "#eadce4",
+                      "on-primary": "#ffffff",
+                      "on-secondary-container": "#6a6066",
+                      "surface-container-high": "#eae7e7",
+                      "surface-container-low": "#f6f3f2",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed": "#3e0021",
+                      "tertiary-container": "#068800",
+                      "inverse-primary": "#ffb0cc",
+                      "on-error": "#ffffff",
+                      "inverse-on-surface": "#f3f0ef",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-container": "#fffbff",
+                      "surface-container-highest": "#e5e2e1",
+                      "primary-fixed": "#ffd9e4",
+                      "secondary-fixed-dim": "#d0c3ca"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "16px",
+                      "xs": "4px",
+                      "sm": "8px",
+                      "gutter": "24px",
+                      "container-max": "1280px",
+                      "xl": "32px",
+                      "lg": "24px",
+                      "xxl": "48px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "Be Vietnam Pro"
+                      ],
+                      "body-md": [
+                              "Be Vietnam Pro"
+                      ],
+                      "label-sm": [
+                              "Be Vietnam Pro"
+                      ],
+                      "label-md": [
+                              "Be Vietnam Pro"
+                      ],
+                      "headline-md": [
+                              "Be Vietnam Pro"
+                      ],
+                      "headline-lg-mobile": [
+                              "Be Vietnam Pro"
+                      ],
+                      "body-lg": [
+                              "Be Vietnam Pro"
+                      ],
+                      "headline-lg": [
+                              "Be Vietnam Pro"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom input styles for the premium feel */
+        .premium-input {
+            transition: all 0.3s ease;
+        }
+        .premium-input:focus-within {
+            box-shadow: 0 0 15px rgba(223, 14, 132, 0.15); /* primary-container color hint */
+            background-color: theme('colors.surface-container-lowest');
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-body-md text-on-surface antialiased min-h-screen flex items-center justify-center relative overflow-hidden">
+<!-- Decorative Abstract Background Elements for 3D/Glass depth -->
+<div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-primary-fixed rounded-full mix-blend-multiply filter blur-[100px] opacity-70 animate-pulse" style="animation-duration: 8s;"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-tertiary-fixed rounded-full mix-blend-multiply filter blur-[100px] opacity-50 animate-pulse" style="animation-duration: 12s;"></div>
+<!-- Main Content Container -->
+<main class="w-full max-w-md px-gutter relative z-10">
+<!-- Glassmorphism Login Card -->
+<div class="bg-white/70 backdrop-blur-xl border border-white/60 shadow-[0_10px_40px_rgba(0,0,0,0.06)] rounded-xl p-xl flex flex-col items-center">
+<!-- 3D Mascot Logo -->
+<div class="w-32 h-32 mb-lg relative -mt-xxl">
+<!-- Using a subtle shadow under the image to enhance the 3D pop-out effect -->
+<div class="absolute inset-0 bg-black/5 rounded-full blur-md translate-y-4"></div>
+<img alt="TEDDYFOOD 3D Mascot" class="w-full h-full object-contain drop-shadow-xl relative z-10 hover:-translate-y-2 transition-transform duration-500 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVvKsSikakj0ix6VcZH71_xQpwUdDqfO8MQ-RTlNNGr5CIxFaBR10eUUG0czE4rwX8UGwIHIx7QJE_IPsX_VOmDkM8LseMHt08F-L-yC9uJ-Rrp1d_dV2fNGcois2_ieMQirpxaEoyG3jJfISJJzRoNkn-G5hOfMyRzek-AlxFMHkkcSk204vQkAnIczWJ73LEDbw15l1odgSD7ccrekgywPaQSjsdmE9AwyxR1bn2Jx0MhjuchI8WR4hJeihkNxTDyMXxWNoo_mI"/>
+</div>
+<!-- Header -->
+<div class="text-center mb-lg w-full">
+<h1 class="text-headline-md font-headline-md text-on-surface tracking-tight">Welcome Back! 👋</h1>
+<p class="text-body-md font-body-md text-on-surface-variant mt-xs">Ready for another delicious delivery?</p>
+</div>
+<!-- Login Form -->
+<form class="w-full space-y-md" onsubmit="event.preventDefault();">
+<!-- Email Field -->
+<div class="premium-input bg-surface-container-low rounded-full px-lg py-sm flex items-center border border-transparent focus-within:border-primary/30">
+<span class="material-symbols-outlined text-secondary mr-sm" style="font-variation-settings: 'FILL' 1;">mail</span>
+<input class="w-full bg-transparent border-none text-body-md font-body-md text-on-surface placeholder:text-on-surface-variant/50 focus:ring-0 px-0" placeholder="Email address" required="" type="email"/>
+</div>
+<!-- Password Field -->
+<div>
+<div class="premium-input bg-surface-container-low rounded-full px-lg py-sm flex items-center border border-transparent focus-within:border-primary/30">
+<span class="material-symbols-outlined text-secondary mr-sm" style="font-variation-settings: 'FILL' 1;">lock</span>
+<input class="w-full bg-transparent border-none text-body-md font-body-md text-on-surface placeholder:text-on-surface-variant/50 focus:ring-0 px-0" id="passwordInput" placeholder="Password" required="" type="password"/>
+<button class="text-secondary hover:text-primary transition-colors focus:outline-none p-xs ml-sm rounded-full" id="togglePasswordBtn" type="button">
+<span class="material-symbols-outlined" id="togglePasswordIcon">visibility</span>
+</button>
+</div>
+<!-- Forgot Password Link -->
+<div class="flex justify-end mt-sm">
+<a class="text-label-sm font-label-sm text-primary hover:text-primary-container hover:underline transition-colors" href="#">Forgot Password?</a>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="pt-sm">
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary text-label-md font-label-md rounded-full py-4 shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/40 hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300 ring-1 ring-inset ring-white/20 relative overflow-hidden group" type="submit">
+<span class="relative z-10">Log In</span>
+<!-- Subtle shine effect on hover -->
+<div class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_1.5s_infinite] skew-x-12"></div>
+</button>
+</div>
+</form>
+<!-- Divider -->
+<div class="w-full flex items-center my-lg">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="mx-sm text-label-sm font-label-sm text-on-surface-variant/70 uppercase tracking-wider">or</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<!-- Sign Up Prompt -->
+<div class="text-center text-body-md font-body-md text-on-surface-variant">
+                Don't have an account? 
+                <a class="text-primary font-bold hover:text-primary-container hover:underline transition-colors ml-xs" href="#">Sign up</a>
+</div>
+</div>
+</main>
+<script>
+        // Password Visibility Toggle Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const passwordInput = document.getElementById('passwordInput');
+            const toggleBtn = document.getElementById('togglePasswordBtn');
+            const toggleIcon = document.getElementById('togglePasswordIcon');
+
+            toggleBtn.addEventListener('click', () => {
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    toggleIcon.textContent = 'visibility_off';
+                } else {
+                    passwordInput.type = 'password';
+                    toggleIcon.textContent = 'visibility';
+                }
+            });
+        });
+    </script>
+</body></html>

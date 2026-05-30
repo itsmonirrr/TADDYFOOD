@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TEDDYFOOD - Driver Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Custom Toggle Switch for Online/Offline */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #b30069;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #df0e84; /* primary-container approx */
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#85fd6d",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#69df54",
+                        "primary-container": "#df0e84",
+                        "surface": "#fcf9f8",
+                        "on-tertiary-fixed-variant": "#035300",
+                        "surface-bright": "#fcf9f8",
+                        "on-primary-fixed-variant": "#8d0051",
+                        "on-tertiary-container": "#f8ffef",
+                        "outline-variant": "#e1bdc8",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e5e2e1",
+                        "inverse-surface": "#313030",
+                        "on-secondary-fixed": "#21191f",
+                        "primary": "#b30069",
+                        "secondary": "#665b62",
+                        "secondary-fixed": "#eddfe6",
+                        "surface-container": "#f0eded",
+                        "surface-dim": "#dcd9d9",
+                        "on-tertiary-fixed": "#012200",
+                        "surface-tint": "#b8006c",
+                        "background": "#fcf9f8",
+                        "primary-fixed-dim": "#ffb0cc",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#594048",
+                        "on-surface": "#1c1b1b",
+                        "on-background": "#1c1b1b",
+                        "tertiary": "#046c00",
+                        "on-secondary-fixed-variant": "#4d444a",
+                        "outline": "#8d6f79",
+                        "secondary-container": "#eadce4",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#6a6066",
+                        "surface-container-high": "#eae7e7",
+                        "surface-container-low": "#f6f3f2",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#3e0021",
+                        "tertiary-container": "#068800",
+                        "inverse-primary": "#ffb0cc",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#fffbff",
+                        "surface-container-highest": "#e5e2e1",
+                        "primary-fixed": "#ffd9e4",
+                        "secondary-fixed-dim": "#d0c3ca"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "xxl": "48px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "label-sm": ["Be Vietnam Pro"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "headline-md": ["Be Vietnam Pro"],
+                        "headline-lg-mobile": ["Be Vietnam Pro"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "headline-lg": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Specialized Driver Header -->
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-outline-variant/30 shadow-sm shadow-primary/5">
+<div class="max-w-container-max mx-auto px-gutter h-20 flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-container relative shadow-sm">
+<img alt="Driver Profile" class="w-full h-full object-cover" data-alt="A high-quality, friendly portrait of a delivery driver wearing a subtle pink uniform element, bright sunny outdoor lighting, soft background blur, premium realistic 3D aesthetic style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjEipCTRpHfZ9wIZ8j24d5b9Imyf6idbKk0TNpuNysiJT2aLSouwVIteoZV5z_QeK55T1kVVu6f39yths3V834tLXoT7zFU9Ar6JeA5UI8dqXiTWJbPOxOghRn0VZVp4XFxJYh-qf6xkpnMFi_7w0U3zqMghsSDzPLNh0E8ea-al3PWOWIrmQ3PoaBCP7hK4WikTfTdto2ZFhRt36m_EiQTdPfNfIfJlHpgwitas7i6CtmLGwjjO8HW8tDVhMAoaFzUjbiXYpPjSE"/>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface m-0 leading-none">Hi, Alex!</h1>
+<p class="font-label-sm text-label-sm text-secondary mt-1">Ready to deliver smiles?</p>
+</div>
+</div>
+<!-- Online Toggle -->
+<div class="flex items-center gap-sm bg-surface-container py-2 px-4 rounded-full shadow-inner border border-white">
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim" data-icon="fiber_manual_record" data-weight="fill" style="font-variation-settings: 'FILL' 1;">fiber_manual_record</span>
+                    Online
+                </span>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-surface-variant appearance-none cursor-pointer z-10 top-0 left-0 transition-all duration-300" id="toggle" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant cursor-pointer transition-colors duration-300" for="toggle"></label>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-gutter py-xl">
+<!-- Dashboard Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-start">
+<!-- Left Column: Primary Actions & Active Delivery (Spans 8 cols on desktop) -->
+<div class="lg:col-span-8 flex flex-col gap-lg">
+<!-- Earnings Quick Stat (Glassmorphic Bento Card) -->
+<div class="bg-primary/5 rounded-2xl p-lg border border-primary/10 relative overflow-hidden flex items-center justify-between shadow-sm">
+<div class="absolute -right-10 -top-10 w-40 h-40 bg-primary-fixed-dim rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+<div>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-wider mb-1">Today's Earnings</p>
+<h2 class="font-display-lg text-display-lg text-primary m-0">$142.50</h2>
+<p class="font-label-sm text-label-sm text-tertiary flex items-center gap-xs mt-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+                            +12% vs yesterday
+                        </p>
+</div>
+<div class="hidden sm:block">
+<div class="w-24 h-24 bg-surface rounded-full flex items-center justify-center shadow-inner border border-white">
+<span class="material-symbols-outlined text-[48px] text-primary" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+</div>
+</div>
+<!-- Active Delivery High-Priority Card -->
+<section>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-md">Current Mission</h3>
+<div class="bg-white/90 backdrop-blur-xl rounded-xl shadow-lg shadow-primary/10 border border-primary/20 overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+<!-- Map Visual Placeholder -->
+<div class="h-48 w-full relative bg-surface-container-high overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center opacity-80 mix-blend-multiply" data-alt="A clean, minimalist 3D rendering of a city map interface, light mode, soft pastel colors, prominent winding route highlighted in hot pink, destination marked with a cute teddy bear pin, premium soft lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDjVB1bw4TypBxOjY6i8883eDppeEENuq9MOvleUNJof2wNFPpeRhAZbuPGzasCu0vfHfxZhJupBFlJp2jzG0yqkGt-Vl6iRs7Mu0OvjrdX1R_VHP8KENsNDAuRD4Yd_fQLXeso7H_pKE1KVwTr8GZ8SexQVXyY46CQvhNHf1obISS_EiJSgoBe0wRyuJq-avfu7MMSc44CXjXixJNtlRt_6e9zLS7Xf4drDvl62SR8LhKN3vaVQIz8pvxiZbBWWw7QqfjEdWgCXVQ')">
+</div>
+<!-- Gradient overlay to blend map into content -->
+<div class="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent"></div>
+<!-- Floating ETA badge -->
+<div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md rounded-full px-4 py-2 shadow-md flex items-center gap-2 border border-white">
+<span class="material-symbols-outlined text-primary" data-icon="schedule">schedule</span>
+<span class="font-label-md text-label-md text-on-surface">12 mins away</span>
+</div>
+</div>
+<div class="p-lg">
+<!-- Order Info -->
+<div class="flex justify-between items-start mb-lg border-b border-surface-variant pb-md">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface m-0">Order #8892</h4>
+<p class="font-body-md text-body-md text-secondary mt-1">Burger Palace • 2 items</p>
+</div>
+<div class="text-right">
+<p class="font-headline-md text-headline-md text-primary m-0">$8.50</p>
+<p class="font-label-sm text-label-sm text-secondary">Est. Payout</p>
+</div>
+</div>
+<!-- Progress Tracker -->
+<div class="relative flex justify-between items-center mb-xl mt-md">
+<!-- Connecting Line (Background) -->
+<div class="absolute left-6 right-6 top-1/2 h-1 bg-surface-variant -translate-y-1/2 z-0 rounded-full"></div>
+<!-- Connecting Line (Progress) -->
+<div class="absolute left-6 w-1/2 h-1 bg-primary -translate-y-1/2 z-0 rounded-full transition-all duration-500"></div>
+<!-- Step 1: Picked Up (Completed) -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">Picked Up</span>
+</div>
+<!-- Step 2: On the Way (Active) -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-14 h-14 rounded-full bg-white border-4 border-primary text-primary flex items-center justify-center shadow-lg shadow-primary/20 animate-pulse">
+<span class="material-symbols-outlined text-[28px]" data-icon="two_wheeler">two_wheeler</span>
+</div>
+<span class="font-label-md text-label-md text-primary font-bold">On the Way</span>
+</div>
+<!-- Step 3: Delivered (Pending) -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-12 h-12 rounded-full bg-surface-container-high text-secondary flex items-center justify-center border-2 border-surface-variant">
+<span class="material-symbols-outlined" data-icon="home_pin">home_pin</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">Delivered</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex gap-md">
+<button class="flex-1 bg-primary text-on-primary font-label-md text-label-md py-4 rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] hover:bg-surface-tint transition-all active:scale-95 flex justify-center items-center gap-2">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+                                    Mark as Delivered
+                                </button>
+<button class="w-14 h-14 bg-surface-container-high text-on-surface rounded-full flex items-center justify-center hover:bg-surface-variant transition-colors border border-outline-variant">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+</button>
+<button class="w-14 h-14 bg-surface-container-high text-on-surface rounded-full flex items-center justify-center hover:bg-surface-variant transition-colors border border-outline-variant">
+<span class="material-symbols-outlined" data-icon="near_me">near_me</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Earnings Summary Section -->
+<section class="mt-md">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-md">Earnings Summary</h3>
+<div class="grid grid-cols-3 gap-md">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md text-center hover:border-primary/50 transition-colors">
+<p class="font-label-sm text-label-sm text-secondary mb-1">Today</p>
+<p class="font-headline-md text-headline-md text-on-surface">$142.50</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md text-center hover:border-primary/50 transition-colors">
+<p class="font-label-sm text-label-sm text-secondary mb-1">This Week</p>
+<p class="font-headline-md text-headline-md text-on-surface">$845.20</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md text-center hover:border-primary/50 transition-colors">
+<p class="font-label-sm text-label-sm text-secondary mb-1">This Month</p>
+<p class="font-headline-md text-headline-md text-on-surface">$2,104.00</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Available Orders Feed (Spans 4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-md">
+<div class="flex items-center justify-between mb-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface m-0">Available Orders</h3>
+<span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-label-sm text-label-sm">3 Nearby</span>
+</div>
+<!-- Order Card 1 -->
+<div class="bg-white/70 backdrop-blur-md rounded-xl p-md shadow-sm border border-white/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden">
+<!-- Hover Glow Effect -->
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors pointer-events-none"></div>
+<div class="flex justify-between items-start mb-sm">
+<div class="flex gap-sm items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface m-0">Sushi Zen</h4>
+<p class="font-label-sm text-label-sm text-secondary">2.4 km away</p>
+</div>
+</div>
+<p class="font-headline-md text-headline-md text-primary m-0">$12.00</p>
+</div>
+<div class="flex items-center gap-sm text-secondary mb-md pl-12">
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_downward">arrow_downward</span>
+<p class="font-label-sm text-label-sm truncate">Dropoff: 123 Maple Street, Apt 4B</p>
+</div>
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-3 rounded-full hover:bg-surface-tint active:scale-95 transition-all shadow-sm">
+                        Accept Delivery
+                    </button>
+</div>
+<!-- Order Card 2 -->
+<div class="bg-white/70 backdrop-blur-md rounded-xl p-md shadow-sm border border-white/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden">
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors pointer-events-none"></div>
+<div class="flex justify-between items-start mb-sm">
+<div class="flex gap-sm items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="local_pizza">local_pizza</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface m-0">Luigi's Oven</h4>
+<p class="font-label-sm text-label-sm text-secondary">3.1 km away</p>
+</div>
+</div>
+<p class="font-headline-md text-headline-md text-primary m-0">$9.50</p>
+</div>
+<div class="flex items-center gap-sm text-secondary mb-md pl-12">
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_downward">arrow_downward</span>
+<p class="font-label-sm text-label-sm truncate">Dropoff: 88 Tech Park Drive</p>
+</div>
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-3 rounded-full hover:bg-surface-tint active:scale-95 transition-all shadow-sm">
+                        Accept Delivery
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

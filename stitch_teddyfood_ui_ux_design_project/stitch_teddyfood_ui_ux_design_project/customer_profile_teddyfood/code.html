@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TEDDYFOOD - Customer Profile</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#85fd6d",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#69df54",
+                        "primary-container": "#df0e84",
+                        "surface": "#fcf9f8",
+                        "on-tertiary-fixed-variant": "#035300",
+                        "surface-bright": "#fcf9f8",
+                        "on-primary-fixed-variant": "#8d0051",
+                        "on-tertiary-container": "#f8ffef",
+                        "outline-variant": "#e1bdc8",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e5e2e1",
+                        "inverse-surface": "#313030",
+                        "on-secondary-fixed": "#21191f",
+                        "primary": "#b30069",
+                        "secondary": "#665b62",
+                        "secondary-fixed": "#eddfe6",
+                        "surface-container": "#f0eded",
+                        "surface-dim": "#dcd9d9",
+                        "on-tertiary-fixed": "#012200",
+                        "surface-tint": "#b8006c",
+                        "background": "#fcf9f8",
+                        "primary-fixed-dim": "#ffb0cc",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#594048",
+                        "on-surface": "#1c1b1b",
+                        "on-background": "#1c1b1b",
+                        "tertiary": "#046c00",
+                        "on-secondary-fixed-variant": "#4d444a",
+                        "outline": "#8d6f79",
+                        "secondary-container": "#eadce4",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#6a6066",
+                        "surface-container-high": "#eae7e7",
+                        "surface-container-low": "#f6f3f2",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#3e0021",
+                        "tertiary-container": "#068800",
+                        "inverse-primary": "#ffb0cc",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#fffbff",
+                        "surface-container-highest": "#e5e2e1",
+                        "primary-fixed": "#ffd9e4",
+                        "secondary-fixed-dim": "#d0c3ca"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "xxl": "48px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "label-sm": ["Be Vietnam Pro"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "headline-md": ["Be Vietnam Pro"],
+                        "headline-lg-mobile": ["Be Vietnam Pro"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "headline-lg": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(179, 0, 105, 0.05);
+        }
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(223, 14, 132, 0.15);
+            border-color: rgba(223, 14, 132, 0.2);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #b30069, #df0e84);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col relative overflow-x-hidden">
+<!-- Background Decoration -->
+<div class="fixed top-0 left-0 w-full h-[500px] bg-gradient-to-b from-primary-fixed/30 to-transparent -z-10 pointer-events-none"></div>
+<div class="fixed top-[-10%] right-[-5%] w-[600px] h-[600px] rounded-full bg-primary-fixed/40 blur-3xl -z-10 pointer-events-none mix-blend-multiply"></div>
+<div class="fixed bottom-[-10%] left-[-5%] w-[400px] h-[400px] rounded-full bg-secondary-fixed/40 blur-3xl -z-10 pointer-events-none mix-blend-multiply"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter py-md max-w-container-max mx-auto bg-white/70 dark:bg-inverse-surface/70 backdrop-blur-md border-b border-white/20 dark:border-white/10 shadow-md shadow-primary/5">
+<div class="flex items-center gap-sm">
+<span class="text-headline-lg font-display-lg font-extrabold text-primary dark:text-primary-fixed">TEDDYFOOD</span>
+</div>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors font-label-md text-label-md hover:scale-105 duration-300" href="#">Restaurants</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors font-label-md text-label-md hover:scale-105 duration-300" href="#">Offers</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors font-label-md text-label-md hover:scale-105 duration-300" href="#">Help</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="text-primary dark:text-primary-fixed hover:scale-105 hover:text-primary transition-all duration-300 p-xs active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">location_on</span>
+</button>
+<button class="text-primary dark:text-primary-fixed hover:scale-105 hover:text-primary transition-all duration-300 p-xs active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_cart</span>
+</button>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md px-lg py-sm rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-md shadow-primary/20">
+                Sign In
+            </button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-[100px] pb-xxl px-gutter max-w-container-max mx-auto w-full flex flex-col gap-xl">
+<!-- Profile Header -->
+<section class="glass-card rounded-[2rem] p-xl flex flex-col md:flex-row items-center gap-xl relative overflow-hidden transition-all duration-500">
+<div class="relative w-32 h-32 md:w-40 md:h-40 rounded-full bg-primary-fixed flex-shrink-0 border-4 border-white shadow-xl flex items-center justify-center overflow-hidden">
+<img alt="Customer Avatar" class="w-full h-full object-cover" data-alt="A highly detailed, premium 3D render of a friendly and approachable young professional character acting as a user avatar. The character is smiling warmly, rendered with soft, tactile textures reminiscent of high-end animation. The background is a clean, vibrant gradient that perfectly complements the bright, optimistic, and slightly playful aesthetic of a modern food delivery application. The lighting is meticulously crafted to give a sense of depth and quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKEvdcLXCJ9mv7sLbfybRp6ZxtoqXcKQIugo6ceHX0QtdnKC2a-fKApvCPMzg8CpCEtzxnRtZZUOxv_8xyIczYpeBllS3xb_tamavY-rNlsvvHZnvIxJO4QcjVYn1Cm79jWLCZi5Ul0QbXUe50FwZmCeqRSj3suMNt4CyZ31wUMV3CV6G9yToMqN20cmGlOjtnxq7v2h-t6pjPTXTboluHMHbt8rnR3akGgAvfZUO2WJp5xM2tfGWOb8wk_KecMolEDVo7JvnoHQM"/>
+</div>
+<div class="flex-grow text-center md:text-left">
+<h1 class="text-headline-lg font-display-lg text-on-surface mb-xs">Alex Johnson</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant flex items-center justify-center md:justify-start gap-xs mb-md">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+                    alex.johnson@example.com
+                </p>
+<div class="flex flex-wrap gap-sm justify-center md:justify-start">
+<span class="bg-surface-container-high text-on-surface-variant px-md py-xs rounded-full font-label-sm text-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-tertiary">workspace_premium</span>
+                        Gold Member
+                    </span>
+<span class="bg-surface-container-high text-on-surface-variant px-md py-xs rounded-full font-label-sm text-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-primary">local_fire_department</span>
+                        12 Orders this month
+                    </span>
+</div>
+</div>
+<div class="flex-shrink-0">
+<button class="bg-white border border-outline-variant text-primary font-label-md text-label-md px-lg py-md rounded-full hover:bg-primary-fixed hover:border-primary transition-all duration-300 hover:scale-105 shadow-sm flex items-center gap-sm">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+                    Edit Profile
+                </button>
+</div>
+</section>
+<!-- Navigation Tabs -->
+<section class="flex overflow-x-auto pb-sm gap-sm no-scrollbar scroll-smooth">
+<button class="flex-shrink-0 bg-primary text-on-primary px-lg py-md rounded-full font-label-md text-label-md flex items-center gap-sm shadow-md shadow-primary/20 transition-all hover:scale-105 active:scale-95">
+<span class="material-symbols-outlined">package_2</span>
+                My Orders
+            </button>
+<button class="flex-shrink-0 bg-surface-container-low text-secondary hover:bg-surface-container-high hover:text-on-surface px-lg py-md rounded-full font-label-md text-label-md flex items-center gap-sm transition-all hover:scale-105 active:scale-95">
+<span class="material-symbols-outlined">location_on</span>
+                Saved Addresses
+            </button>
+<button class="flex-shrink-0 bg-surface-container-low text-secondary hover:bg-surface-container-high hover:text-on-surface px-lg py-md rounded-full font-label-md text-label-md flex items-center gap-sm transition-all hover:scale-105 active:scale-95">
+<span class="material-symbols-outlined">favorite</span>
+                Favourites
+            </button>
+<button class="flex-shrink-0 bg-surface-container-low text-secondary hover:bg-surface-container-high hover:text-on-surface px-lg py-md rounded-full font-label-md text-label-md flex items-center gap-sm transition-all hover:scale-105 active:scale-95">
+<span class="material-symbols-outlined">local_activity</span>
+                Vouchers
+            </button>
+</section>
+<!-- Content Area: My Orders -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-lg">
+<!-- Order Card 1 -->
+<div class="glass-card rounded-[1.5rem] p-lg flex flex-col gap-md transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-md">
+<div class="w-16 h-16 rounded-xl overflow-hidden bg-white shadow-sm border border-outline-variant/30 flex-shrink-0">
+<img alt="Burger Joint" class="w-full h-full object-cover" data-alt="A vivid, appetizing close-up of a gourmet double cheeseburger, perfectly lit with warm, inviting studio lights. The burger sits against a clean, minimalist background, emphasizing the glossy bun, melting cheese, and fresh ingredients. The image quality is exceptional, designed to instantly trigger hunger and align with a premium, high-energy food delivery brand's visual standards." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvt1r0zZfUyTRolKKSDuplGIK4qeXB7K0wYvSpltZXX-9LXguEIrAnNGPWqld4UyoQJHlryNfyU2szI_Y0brjGTurNWHeer5-eF7i4IiYX9h2d60KlDGmnEHNEqNQBHAuVr8cWNUrbrUbVw64hGiC2JrhFIGCFk65qtklJIbQmYSCzO4oynldr1WjfpSECSYcY9TIpuIcrd537KPtq0NbNa8nXpIymDfXujFY58fqyK-HCNI3g1sw4TmcmEDN-HaqT5cAa2wFC2fw"/>
+</div>
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface">Burger Boutique</h3>
+<p class="text-body-md font-body-md text-on-surface-variant text-sm">Oct 24, 2023 • 19:30</p>
+</div>
+</div>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-sm py-xs rounded-md font-label-sm text-label-sm font-bold flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                        Delivered
+                    </span>
+</div>
+<div class="border-t border-outline-variant/40 pt-md pb-sm text-body-md font-body-md text-secondary">
+                    2x Truffle Burger, 1x Sweet Potato Fries, 2x Craft Cola
+                </div>
+<div class="flex justify-between items-center mt-auto pt-sm">
+<div class="text-headline-md font-headline-md text-primary">$42.50</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md px-lg py-sm rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-md shadow-primary/20 flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+                        Reorder
+                    </button>
+</div>
+</div>
+<!-- Order Card 2 -->
+<div class="glass-card rounded-[1.5rem] p-lg flex flex-col gap-md transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-md">
+<div class="w-16 h-16 rounded-xl overflow-hidden bg-white shadow-sm border border-outline-variant/30 flex-shrink-0">
+<img alt="Pizza Place" class="w-full h-full object-cover" data-alt="A beautifully plated slice of premium pepperoni pizza, captured from a dynamic, slightly elevated angle. The cheese is perfectly melted and glossy, with edges slightly charred, sitting on a soft, minimalist surface. The lighting is crisp and modern, highlighting the rich red tones of the pepperoni and the warm golden crust, perfectly suiting a sophisticated yet playful food delivery UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkHJOVT4gQd74DnwG8MFa0xPW6ko-UNEOHD4DoHICZdsIZW4hF4srn4MdsYVoZcF_Aq0HfCdP-IuUR1xYb0igNhUX9s-NbxEqHWc5XVFHGAL7yoL-VYKSGcJF2zp7c_1XVPlhaeyAF-P1ieLI9P3V_a34it1GDW3C79pbyI96lEP6IPppA5r6j1md7l2T7idy5xtyL2N_3NdExAOB1MBhwEnJBsq38xiyyLfIU8kMzJmk4t4ETQF7ZZTASIAcjqRL9TUN5xA8WT6I"/>
+</div>
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface">Napoli Crust</h3>
+<p class="text-body-md font-body-md text-on-surface-variant text-sm">Oct 18, 2023 • 20:15</p>
+</div>
+</div>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-sm py-xs rounded-md font-label-sm text-label-sm font-bold flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                        Delivered
+                    </span>
+</div>
+<div class="border-t border-outline-variant/40 pt-md pb-sm text-body-md font-body-md text-secondary">
+                    1x Large Diavola, 1x Garlic Bread, 1x Tiramisu
+                </div>
+<div class="flex justify-between items-center mt-auto pt-sm">
+<div class="text-headline-md font-headline-md text-primary">$38.00</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md px-lg py-sm rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-md shadow-primary/20 flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+                        Reorder
+                    </button>
+</div>
+</div>
+<!-- Order Card 3 -->
+<div class="glass-card rounded-[1.5rem] p-lg flex flex-col gap-md transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-md">
+<div class="w-16 h-16 rounded-xl overflow-hidden bg-white shadow-sm border border-outline-variant/30 flex-shrink-0 flex items-center justify-center bg-surface-container-high">
+<span class="material-symbols-outlined text-[32px] text-primary/50">ramen_dining</span>
+</div>
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface">Zen Noodles</h3>
+<p class="text-body-md font-body-md text-on-surface-variant text-sm">Oct 10, 2023 • 13:00</p>
+</div>
+</div>
+<span class="bg-surface-variant text-on-surface-variant px-sm py-xs rounded-md font-label-sm text-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">history</span>
+                        Completed
+                    </span>
+</div>
+<div class="border-t border-outline-variant/40 pt-md pb-sm text-body-md font-body-md text-secondary">
+                    1x Spicy Tonkotsu Ramen, 1x Gyoza (6pcs)
+                </div>
+<div class="flex justify-between items-center mt-auto pt-sm">
+<div class="text-headline-md font-headline-md text-primary">$24.00</div>
+<button class="bg-surface-container-highest text-on-surface font-label-md text-label-md px-lg py-sm rounded-full hover:bg-surface-variant transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+                        Reorder
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl px-gutter grid grid-cols-1 md:grid-cols-4 gap-lg max-w-container-max mx-auto bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant mt-auto">
+<div class="col-span-1 md:col-span-4 mb-md">
+<span class="text-headline-md font-display-lg font-black text-on-surface dark:text-on-background">TEDDYFOOD</span>
+</div>
+<div class="flex flex-col gap-sm">
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary hover:underline transition-all duration-300" href="#">About Us</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary hover:underline transition-all duration-300" href="#">Partner with Us</a>
+</div>
+<div class="flex flex-col gap-sm">
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary hover:underline transition-all duration-300" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary hover:underline transition-all duration-300" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col gap-sm">
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary hover:underline transition-all duration-300" href="#">Contact Support</a>
+</div>
+<div class="col-span-1 md:col-span-4 mt-lg pt-lg border-t border-outline-variant/50">
+<p class="text-body-md font-body-md text-secondary">© 2024 TEDDYFOOD. All rights reserved. Delighting you with every bite.</p>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TEDDYFOOD Partner Dashboard</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#85fd6d",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#69df54",
+                    "primary-container": "#df0e84",
+                    "surface": "#fcf9f8",
+                    "on-tertiary-fixed-variant": "#035300",
+                    "surface-bright": "#fcf9f8",
+                    "on-primary-fixed-variant": "#8d0051",
+                    "on-tertiary-container": "#f8ffef",
+                    "outline-variant": "#e1bdc8",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e5e2e1",
+                    "inverse-surface": "#313030",
+                    "on-secondary-fixed": "#21191f",
+                    "primary": "#b30069",
+                    "secondary": "#665b62",
+                    "secondary-fixed": "#eddfe6",
+                    "surface-container": "#f0eded",
+                    "surface-dim": "#dcd9d9",
+                    "on-tertiary-fixed": "#012200",
+                    "surface-tint": "#b8006c",
+                    "background": "#fcf9f8",
+                    "primary-fixed-dim": "#ffb0cc",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#594048",
+                    "on-surface": "#1c1b1b",
+                    "on-background": "#1c1b1b",
+                    "tertiary": "#046c00",
+                    "on-secondary-fixed-variant": "#4d444a",
+                    "outline": "#8d6f79",
+                    "secondary-container": "#eadce4",
+                    "on-primary": "#ffffff",
+                    "on-secondary-container": "#6a6066",
+                    "surface-container-high": "#eae7e7",
+                    "surface-container-low": "#f6f3f2",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed": "#3e0021",
+                    "tertiary-container": "#068800",
+                    "inverse-primary": "#ffb0cc",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#f3f0ef",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-container": "#fffbff",
+                    "surface-container-highest": "#e5e2e1",
+                    "primary-fixed": "#ffd9e4",
+                    "secondary-fixed-dim": "#d0c3ca"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "xxl": "48px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "display-lg": [
+                            "Be Vietnam Pro"
+                    ],
+                    "body-md": [
+                            "Be Vietnam Pro"
+                    ],
+                    "label-sm": [
+                            "Be Vietnam Pro"
+                    ],
+                    "label-md": [
+                            "Be Vietnam Pro"
+                    ],
+                    "headline-md": [
+                            "Be Vietnam Pro"
+                    ],
+                    "headline-lg-mobile": [
+                            "Be Vietnam Pro"
+                    ],
+                    "body-lg": [
+                            "Be Vietnam Pro"
+                    ],
+                    "headline-lg": [
+                            "Be Vietnam Pro"
+                    ]
+            },
+            "fontSize": {
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "28px",
+                            {
+                                    "lineHeight": "36px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        /* Custom utilities for glassmorphism and specific gradients */
+        .glass-card {
+            @apply bg-white/70 backdrop-blur-md border border-white/40 shadow-[0_10px_30px_rgba(0,0,0,0.04)];
+        }
+        .btn-primary {
+            @apply bg-gradient-to-r from-[#E91E8C] to-[#FF4D97] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.4)] hover:scale-105 hover:shadow-[0_8px_20px_rgba(233,30,140,0.25)] transition-all duration-300 rounded-full;
+        }
+        .text-gradient {
+            @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#FF4D97];
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden">
+<!-- Pattern Background for main canvas -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] z-0" style="background-image: radial-gradient(circle at 2px 2px, black 1px, transparent 0); background-size: 32px 32px;"></div>
+<!-- SideNavBar Component (From JSON) -->
+<nav class="hidden md:flex flex-col bg-inverse-surface dark:bg-surface-container-lowest fixed left-0 top-0 h-full w-64 z-40 shadow-xl shadow-black/20 pt-20 pb-md text-primary-fixed dark:text-primary">
+<!-- Header / Logo Area -->
+<div class="px-lg mb-xl flex flex-col items-center">
+<div class="w-24 h-24 rounded-full bg-surface-container flex items-center justify-center mb-sm shadow-inner overflow-hidden border-4 border-surface">
+<img alt="Admin/Partner Avatar" class="w-full h-full object-cover" data-alt="A premium 3D stylized render of a chef's hat and crossed spatulas, sitting on a pristine white surface. Soft studio lighting highlights the glossy finish. Bright, friendly, modern light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTv3GXfTTTWJ8KH4koGy-UzrRXa9BcX21lBXj6fy8DA9492FdXIjieiE1BmH8YULKzH1F56pCHLlCA2pBfYCYD9QSnxUWZPwEboR80A1H7Ubr72Wr67kVT3AkeWz9xHoEgYxPkOSbw_U3xfbShObH-UBpTtC3Qo_9LHWJ4g8KJWx3YuZyvHs7i_dmhOqCFYXxYL2fvMH3UGxJ_Jo3CCuL78_mLijaMm7u7y5Cv8UB0tIjsF_GFlhxeLX_wM1vILCrnyuey6JjbIm4"/>
+</div>
+<h2 class="font-headline-md text-headline-md font-display-lg font-bold text-primary-fixed text-center">Admin Panel</h2>
+<p class="font-label-sm text-label-sm text-surface-variant text-center opacity-80">TEDDYFOOD Management</p>
+</div>
+<!-- Main Navigation Links -->
+<div class="flex-1 overflow-y-auto px-sm space-y-sm">
+<!-- Active Item: Dashboard -->
+<a class="flex items-center space-x-md py-sm px-md bg-primary-container text-on-primary-container rounded-lg font-bold mx-2 scale-98 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- Inactive Items -->
+<a class="flex items-center space-x-md py-sm px-md text-surface-variant hover:bg-white/10 rounded-lg mx-2 transition-all" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-md text-label-md">Orders</span>
+</a>
+<a class="flex items-center space-x-md py-sm px-md text-surface-variant hover:bg-white/10 rounded-lg mx-2 transition-all" href="#">
+<span class="material-symbols-outlined">restaurant_menu</span>
+<span class="font-label-md text-label-md">Menu Management</span>
+</a>
+<a class="flex items-center space-x-md py-sm px-md text-surface-variant hover:bg-white/10 rounded-lg mx-2 transition-all" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Earnings</span>
+</a>
+<a class="flex items-center space-x-md py-sm px-md text-surface-variant hover:bg-white/10 rounded-lg mx-2 transition-all" href="#">
+<span class="material-symbols-outlined">star</span>
+<span class="font-label-md text-label-md">Reviews</span>
+</a>
+<a class="flex items-center space-x-md py-sm px-md text-surface-variant hover:bg-white/10 rounded-lg mx-2 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+<!-- CTA Button -->
+<div class="px-lg mt-auto mb-md">
+<button class="w-full btn-primary py-sm font-label-md text-label-md flex justify-center items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                Add New Item
+            </button>
+</div>
+<!-- Footer Links -->
+<div class="px-sm pt-md border-t border-white/10 space-y-xs">
+<a class="flex items-center space-x-md py-sm px-md text-surface-variant hover:bg-white/10 rounded-lg mx-2 transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-sm text-label-sm">Logout</span>
+</a>
+<a class="flex items-center space-x-md py-sm px-md text-surface-variant hover:bg-white/10 rounded-lg mx-2 transition-all" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+<span class="font-label-sm text-label-sm">Support</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 relative z-10 min-h-screen flex flex-col p-gutter max-w-container-max mx-auto">
+<!-- Top Header -->
+<header class="flex justify-between items-center mb-xl mt-sm">
+<div>
+<h1 class="font-headline-lg text-headline-lg font-display-lg font-bold text-on-surface">Welcome back, <span class="text-gradient">Burger Queen</span>!</h1>
+<p class="font-body-md text-body-md text-secondary mt-1">Here is what's happening with your store today.</p>
+</div>
+<div class="flex items-center gap-md">
+<button class="w-12 h-12 rounded-full bg-white border border-outline-variant flex items-center justify-center text-primary shadow-sm hover:bg-surface-container transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-3 h-3 bg-primary-container rounded-full border-2 border-white"></span>
+</button>
+</div>
+</header>
+<!-- Top Stats Row (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg mb-xl">
+<!-- Stat Card 1 -->
+<div class="glass-card rounded-2xl p-lg flex flex-col justify-between hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(233,30,140,0.08)] transition-all duration-300">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-primary-fixed rounded-xl text-primary">
+<span class="material-symbols-outlined">shopping_bag</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary-container flex items-center bg-tertiary-fixed/30 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[14px] mr-1">trending_up</span> +12%
+                    </span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-secondary">Today's Orders</p>
+<h3 class="font-headline-lg text-headline-lg font-bold text-on-surface">148</h3>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="glass-card rounded-2xl p-lg flex flex-col justify-between hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(233,30,140,0.08)] transition-all duration-300">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-tertiary-fixed/30 rounded-xl text-tertiary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary-container flex items-center bg-tertiary-fixed/30 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[14px] mr-1">trending_up</span> +5.4%
+                    </span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-secondary">Revenue</p>
+<h3 class="font-headline-lg text-headline-lg font-bold text-on-surface">$2,450.00</h3>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="glass-card rounded-2xl p-lg flex flex-col justify-between hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(233,30,140,0.08)] transition-all duration-300">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-secondary-fixed rounded-xl text-secondary">
+<span class="material-symbols-outlined">restaurant_menu</span>
+</div>
+</div>
+<div>
+<p class="font-label-md text-label-md text-secondary">Active Menu Items</p>
+<h3 class="font-headline-lg text-headline-lg font-bold text-on-surface">42</h3>
+</div>
+</div>
+<!-- Status Toggle Card -->
+<div class="glass-card rounded-2xl p-lg flex flex-col justify-center items-center hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(233,30,140,0.08)] transition-all duration-300 border-primary/20">
+<p class="font-label-md text-label-md text-secondary mb-sm">Store Status</p>
+<div class="relative w-full max-w-[160px] h-12 bg-surface-variant rounded-full p-1 cursor-pointer shadow-inner overflow-hidden flex" onclick="this.classList.toggle('store-closed')">
+<!-- Toggle Switch Logic (Visual only for design) -->
+<div class="w-1/2 h-full bg-white rounded-full shadow-md flex items-center justify-center transform transition-transform duration-300 translate-x-0 z-10">
+<span class="font-label-sm text-label-sm font-bold text-tertiary">OPEN</span>
+</div>
+<div class="absolute inset-0 flex">
+<div class="w-1/2 flex items-center justify-center font-label-sm text-label-sm text-secondary opacity-50">OPEN</div>
+<div class="w-1/2 flex items-center justify-center font-label-sm text-label-sm text-secondary opacity-50">CLOSED</div>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-tertiary mt-2">Currently accepting orders</p>
+</div>
+</section>
+<!-- Main Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg flex-1">
+<!-- Left Column: Orders Focus (Takes up 2 cols on lg) -->
+<div class="lg:col-span-2 space-y-lg flex flex-col">
+<!-- New Orders Section -->
+<div class="glass-card rounded-3xl p-xl flex-1 flex flex-col">
+<div class="flex justify-between items-center mb-md border-b border-outline-variant pb-sm">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+                            New Orders
+                        </h2>
+<a class="font-label-sm text-label-sm text-primary hover:underline" href="#">View All</a>
+</div>
+<div class="space-y-md flex-1">
+<!-- Incoming Order Item -->
+<div class="bg-white/80 rounded-2xl p-md border border-white flex items-center justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center gap-md">
+<div class="w-14 h-14 rounded-full bg-surface-container-high overflow-hidden shadow-inner flex-shrink-0">
+<img alt="Customer Avatar" class="w-full h-full object-cover" data-alt="Premium 3D stylized avatar of a customer. Clean minimal white background. Soft bright lighting, friendly expression, wearing casual vibrant clothes. High-energy modern style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsYK4m29VoRw461jIyGrRk58GGvpX6Mbm3b-6Fy2zFSn3ofgk2JV_TTj_CPvTVZmEs-ILTk3kbQknUnlaB7kdPlXiQD2PmkTJ8yJhsyuSNfkKJu-KbzQSnEhoQx-8WNgc4_VJYblqciGRHZQQu8wQA5Fzipjq3GIJs9OinriHjH9UEEG1PzkAn2JSwT83cxBW952ZM_vQV-ON_21fpSOL7DKhlkljqFgR-mQoj_B6kQN7BIBfz-hXzZISzqE22a2KBzJDXtlezk70"/>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">#ORD-4921</p>
+<p class="font-body-md text-body-md text-secondary">2x Classic Cheeseburger, 1x Fries</p>
+<p class="font-label-sm text-label-sm text-surface-tint mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 2 mins ago
+                                    </p>
+</div>
+</div>
+<div class="flex gap-sm">
+<button class="px-4 py-2 rounded-full border border-outline font-label-md text-label-md text-secondary hover:bg-error-container hover:text-error hover:border-error transition-colors">Reject</button>
+<button class="btn-primary px-6 py-2 font-label-md text-label-md">Accept</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Active Orders Table -->
+<div class="glass-card rounded-3xl p-xl flex-1 flex flex-col">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface mb-md">Active Orders</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant font-label-md text-label-md text-secondary">
+<th class="py-sm font-medium">Order ID</th>
+<th class="py-sm font-medium">Items</th>
+<th class="py-sm font-medium">Total</th>
+<th class="py-sm font-medium">Status</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<tr class="border-b border-surface-container hover:bg-white/50 transition-colors">
+<td class="py-md font-bold text-on-surface">#ORD-4918</td>
+<td class="py-md text-secondary">Spicy Chicken Sandwich, Cola...</td>
+<td class="py-md font-medium text-on-surface">$18.50</td>
+<td class="py-md">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-[#FFF3E0] text-[#E65100] font-label-sm text-label-sm border border-[#FFE0B2]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E65100] mr-2"></span> Preparing
+                                        </span>
+</td>
+</tr>
+<tr class="border-b border-surface-container hover:bg-white/50 transition-colors">
+<td class="py-md font-bold text-on-surface">#ORD-4915</td>
+<td class="py-md text-secondary">Family Meal Deal (4 Burgers...</td>
+<td class="py-md font-medium text-on-surface">$45.00</td>
+<td class="py-md">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm border border-tertiary-fixed-dim">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary mr-2"></span> Ready
+                                        </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Column: Menu Management Preview -->
+<div class="lg:col-span-1">
+<div class="glass-card rounded-3xl p-xl h-full flex flex-col relative overflow-hidden group">
+<!-- Background aesthetic blur -->
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-primary-fixed rounded-full blur-3xl opacity-50 pointer-events-none group-hover:opacity-70 transition-opacity"></div>
+<div class="flex justify-between items-center mb-lg relative z-10">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Menu Preview</h2>
+</div>
+<!-- Add New Item Big Button -->
+<button class="w-full bg-white/80 border-2 border-dashed border-primary/30 hover:border-primary/60 rounded-2xl p-md mb-md flex flex-col items-center justify-center gap-sm text-primary transition-colors h-32 hover:bg-primary-fixed/20 shadow-sm">
+<div class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined">add</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-surface-tint">Add New Item</span>
+</button>
+<!-- Menu Items Grid -->
+<div class="grid grid-cols-2 gap-sm relative z-10">
+<!-- Menu Item 1 -->
+<div class="bg-white rounded-xl p-xs border border-white/40 shadow-sm relative group cursor-pointer">
+<div class="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity z-20">
+<button class="w-7 h-7 rounded-full bg-white/90 backdrop-blur text-secondary flex items-center justify-center hover:text-primary shadow-sm"><span class="material-symbols-outlined text-[16px]">edit</span></button>
+</div>
+<div class="aspect-square rounded-lg bg-surface-container overflow-hidden mb-2">
+<img alt="Classic Burger" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" data-alt="High-quality 3D render of a gourmet classic cheeseburger, placed on a minimalist glossy white surface. Soft directional studio lighting creating a tactile, premium look. Hot pink branding accents subtle in the background blur. Bright, modern light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD90OE2YkOHUyk-xQWvc6lBYQSrWVMI2EtjkzYInVvBuTMzJI-kIY4PvtWP5AjonZ77ruVrVIl71nFgkidn2v_MVfmZbfaU1izO0I5UFHH63uoCpaQ1mC3oJIOQ1A0lMqdZOXEt8Ql1uqUSP4S2e1gDnFQ4Wctxp1c1RHjpIxw6nhDDHJ_eE3fDFrc3Bv9EtssFzcxRV4dcFXx4TVGxcD3J2GcNakikUqI2VU_uzAwE5lMukXy2JafDN8H5KjeuSvuHPn2MTjPORM4"/>
+</div>
+<p class="font-label-sm text-label-sm font-bold text-on-surface truncate px-1">Classic Burger</p>
+<p class="font-label-sm text-label-sm text-primary px-1">$8.99</p>
+</div>
+<!-- Menu Item 2 -->
+<div class="bg-white rounded-xl p-xs border border-white/40 shadow-sm relative group cursor-pointer">
+<div class="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity z-20">
+<button class="w-7 h-7 rounded-full bg-white/90 backdrop-blur text-secondary flex items-center justify-center hover:text-primary shadow-sm"><span class="material-symbols-outlined text-[16px]">edit</span></button>
+</div>
+<div class="aspect-square rounded-lg bg-surface-container overflow-hidden mb-2">
+<img alt="Crispy Fries" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" data-alt="High-quality 3D render of a crispy golden french fries in a premium pink paper container, placed on a minimalist glossy white surface. Soft directional studio lighting creating a tactile, premium look. Bright, modern light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU-2IR8mXQciCuyiu3DrebmmZtE-NkUYb0IXLrD7IYsJZ_lenRzAeUJ8hH5l9SLAmoDpCJM6T-RnuS8RJLh3e191YEsIxKEIZhcm66tr80OzXtQkEkPjtWMbBuOawqvU88GxWtx_uVPWutsOJM8G644Juw0QkkUJo0Is3pQRZd964rDmCSzygJnFjk0OzBMqAm08CU548P3Cmk3rFYxM5onmTpexNFK6IYsBxx9xmIbkuE0iw6NaRmdUuWIOR8d9DuaIjIq1cA9Uk"/>
+</div>
+<p class="font-label-sm text-label-sm font-bold text-on-surface truncate px-1">Crispy Fries</p>
+<p class="font-label-sm text-label-sm text-primary px-1">$3.49</p>
+</div>
+</div>
+<div class="mt-auto pt-md text-center">
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary hover:underline transition-colors flex items-center justify-center gap-1" href="#">
+                            Manage Full Menu <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

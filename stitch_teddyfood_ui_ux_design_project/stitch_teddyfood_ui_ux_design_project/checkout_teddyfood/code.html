@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cart &amp; Checkout - TEDDYFOOD</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#85fd6d",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#69df54",
+                        "primary-container": "#df0e84",
+                        "surface": "#fcf9f8",
+                        "on-tertiary-fixed-variant": "#035300",
+                        "surface-bright": "#fcf9f8",
+                        "on-primary-fixed-variant": "#8d0051",
+                        "on-tertiary-container": "#f8ffef",
+                        "outline-variant": "#e1bdc8",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e5e2e1",
+                        "inverse-surface": "#313030",
+                        "on-secondary-fixed": "#21191f",
+                        "primary": "#b30069",
+                        "secondary": "#665b62",
+                        "secondary-fixed": "#eddfe6",
+                        "surface-container": "#f0eded",
+                        "surface-dim": "#dcd9d9",
+                        "on-tertiary-fixed": "#012200",
+                        "surface-tint": "#b8006c",
+                        "background": "#fcf9f8",
+                        "primary-fixed-dim": "#ffb0cc",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#594048",
+                        "on-surface": "#1c1b1b",
+                        "on-background": "#1c1b1b",
+                        "tertiary": "#046c00",
+                        "on-secondary-fixed-variant": "#4d444a",
+                        "outline": "#8d6f79",
+                        "secondary-container": "#eadce4",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#6a6066",
+                        "surface-container-high": "#eae7e7",
+                        "surface-container-low": "#f6f3f2",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#3e0021",
+                        "tertiary-container": "#068800",
+                        "inverse-primary": "#ffb0cc",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#fffbff",
+                        "surface-container-highest": "#e5e2e1",
+                        "primary-fixed": "#ffd9e4",
+                        "secondary-fixed-dim": "#d0c3ca"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "xxl": "48px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "label-sm": ["Be Vietnam Pro"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "headline-md": ["Be Vietnam Pro"],
+                        "headline-lg-mobile": ["Be Vietnam Pro"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "headline-lg": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom Utilities for Design Guidance */
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        }
+        
+        .glass-panel-heavy {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 20px 40px rgba(179, 0, 105, 0.08); /* Tinted shadow */
+        }
+        
+        .bg-app-gradient {
+            background: linear-gradient(135deg, #fcf9f8 0%, #f0eded 100%);
+        }
+    </style>
+</head>
+<body class="bg-app-gradient text-on-surface font-body-md min-h-screen antialiased overflow-x-hidden">
+<!-- Minimal Header for Transactional Canvas -->
+<header class="w-full px-gutter py-md flex items-center justify-between max-w-container-max mx-auto">
+<a class="flex items-center gap-sm text-secondary hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+<span class="text-label-md font-label-md">Back to Menu</span>
+</a>
+<div class="text-headline-md font-display-lg font-extrabold text-primary-container tracking-tight">
+            TEDDYFOOD
+        </div>
+<div class="w-24"></div> <!-- Spacer for centering -->
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-container-max mx-auto px-gutter py-lg md:py-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg xl:gap-xl">
+<!-- LEFT: Order Summary -->
+<section class="lg:col-span-5 glass-panel rounded-xl p-lg flex flex-col h-fit">
+<div class="flex items-center gap-sm mb-lg border-b border-outline-variant pb-sm">
+<span class="material-symbols-outlined text-primary-container fill text-[28px]" data-icon="shopping_bag">shopping_bag</span>
+<h2 class="text-headline-md font-headline-md text-on-surface">Your Order</h2>
+</div>
+<div class="flex flex-col gap-md">
+<!-- Order Item 1 -->
+<div class="flex items-center gap-md p-sm rounded-lg hover:bg-white/50 transition-colors group">
+<div class="w-20 h-20 rounded-lg overflow-hidden bg-surface-container shadow-inner flex-shrink-0 relative">
+<img alt="Classic Teddy Burger" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" data-alt="A highly detailed, 3D premium render of a massive, juicy double cheeseburger with perfectly melted cheese, crisp lettuce, and a glossy artisan bun. The burger is placed on a clean, light pink background (#FFF0F8) in a bright, soft-light studio setting. The overall aesthetic is playful, high-energy, and deeply appetizing, typical of a modern food delivery app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmwSm9nNmCdGWHWPKgrKcn649cHjRhfqZlTRHfCkXCN6ApmGqCROOvoDvqmP8RosAxOaX4tKGKXfA5d0rq9UVvIXfu0lef5_ufnajEGuAeV2wmFbmuF1RUwFrqSb61SolbAvn_vbFPZfkUwIoT_Und6vsam16ZGFDlCKCyNCDVi6gbU0sButYDaed5hIRboJgIeORTjBZ_rYEJ5ROs7Asx7Wg03j_F_R0GHSlo9c6rSGLD0kclMWx_zLajxjRk5e8OZRBjIqPBCQ4"/>
+</div>
+<div class="flex-grow">
+<h3 class="text-label-md font-label-md text-on-surface">Classic Teddy Burger</h3>
+<p class="text-label-sm font-label-sm text-secondary mt-xs">Extra cheese, No pickles</p>
+<div class="text-label-md font-label-md text-primary-container mt-sm">৳350</div>
+</div>
+<div class="flex flex-col items-end gap-sm">
+<button aria-label="Remove item" class="text-secondary hover:text-error transition-colors p-xs">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+<div class="flex items-center bg-surface-container-high rounded-full px-xs py-xs gap-sm">
+<button class="w-6 h-6 rounded-full bg-white flex items-center justify-center shadow-sm text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="remove">remove</span>
+</button>
+<span class="text-label-md font-label-md w-4 text-center">2</span>
+<button class="w-6 h-6 rounded-full bg-primary-container text-white flex items-center justify-center shadow-sm hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[16px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Order Item 2 -->
+<div class="flex items-center gap-md p-sm rounded-lg hover:bg-white/50 transition-colors group">
+<div class="w-20 h-20 rounded-lg overflow-hidden bg-surface-container shadow-inner flex-shrink-0 relative">
+<img alt="Truffle Fries" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" data-alt="A stylized, premium 3D render of crispy, golden french fries generously dusted with parmesan and herbs, served in a sleek, minimalist pink paper cup. The fries are illuminated by bright, soft studio lighting against a clean white and subtle pink background, embodying a modern, high-energy gourmet fast-food visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJy3kdYmEZs9g8JFkK9Zu2M826E1rxv4ziDKdH7iEB0FUf7ZYOshK3-X-QDIj0kNDkxX1vnNLWANvf8d9qfrSIiAqe_3JLytxRZkpeBrM_FSaTjmSycMc6e4NzxPenppwR15w7h_AnmybCRQ3285DQpgZie0tEvF4ztApyWlNW1pyZ3FFHJxSk8gdygZ8BOCEtrdX3E3c_nDwWTq22YGpPhNNDnvBjdlB_CLMy4hkEEjQJ3N1XGrgKP3FBNramO5yxrHOd6Y5gIcU"/>
+</div>
+<div class="flex-grow">
+<h3 class="text-label-md font-label-md text-on-surface">Truffle Parmesan Fries</h3>
+<p class="text-label-sm font-label-sm text-secondary mt-xs">Large size</p>
+<div class="text-label-md font-label-md text-primary-container mt-sm">৳180</div>
+</div>
+<div class="flex flex-col items-end gap-sm">
+<button aria-label="Remove item" class="text-secondary hover:text-error transition-colors p-xs">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+<div class="flex items-center bg-surface-container-high rounded-full px-xs py-xs gap-sm">
+<button class="w-6 h-6 rounded-full bg-white flex items-center justify-center shadow-sm text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="remove">remove</span>
+</button>
+<span class="text-label-md font-label-md w-4 text-center">1</span>
+<button class="w-6 h-6 rounded-full bg-primary-container text-white flex items-center justify-center shadow-sm hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[16px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Add more items button -->
+<button class="w-full py-sm border border-dashed border-primary-container/30 rounded-lg text-primary-container text-label-md font-label-md flex items-center justify-center gap-xs hover:bg-primary-container/5 transition-colors mt-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="add_circle">add_circle</span>
+                        Add more items
+                    </button>
+</div>
+</section>
+<!-- CENTER: Delivery Details -->
+<section class="lg:col-span-4 glass-panel rounded-xl p-lg flex flex-col h-fit">
+<div class="flex items-center gap-sm mb-lg border-b border-outline-variant pb-sm">
+<span class="material-symbols-outlined text-primary-container fill text-[28px]" data-icon="local_shipping">local_shipping</span>
+<h2 class="text-headline-md font-headline-md text-on-surface">Delivery Details</h2>
+</div>
+<form class="flex flex-col gap-md">
+<!-- Delivery Option Tabs -->
+<div class="flex p-xs bg-surface-container-high rounded-full mb-sm">
+<button class="flex-1 py-sm rounded-full bg-white text-primary-container font-label-md shadow-sm transition-all text-sm" type="button">Delivery</button>
+<button class="flex-1 py-sm rounded-full text-secondary font-label-md hover:text-on-surface transition-all text-sm" type="button">Pickup</button>
+</div>
+<!-- Area Dropdown -->
+<div class="flex flex-col gap-xs">
+<label class="text-label-sm font-label-sm text-on-surface-variant ml-md">Area</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-high text-on-surface border-none rounded-full py-md px-lg focus:ring-2 focus:ring-primary-container focus:bg-white transition-all outline-none font-body-md pr-12">
+<option>Gulshan 1</option>
+<option>Gulshan 2</option>
+<option>Banani</option>
+<option>Dhanmondi</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-secondary pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Address Input -->
+<div class="flex flex-col gap-xs">
+<label class="text-label-sm font-label-sm text-on-surface-variant ml-md">Full Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary pointer-events-none" data-icon="location_on">location_on</span>
+<input class="w-full bg-surface-container-high text-on-surface border-none rounded-full py-md pl-12 pr-lg focus:ring-2 focus:ring-primary-container focus:bg-white transition-all outline-none font-body-md placeholder-secondary-fixed-dim" placeholder="House, Road, Block, Apartment" type="text"/>
+</div>
+</div>
+<!-- Special Instructions -->
+<div class="flex flex-col gap-xs">
+<label class="text-label-sm font-label-sm text-on-surface-variant ml-md">Special Instructions (Optional)</label>
+<textarea class="w-full bg-surface-container-high text-on-surface border-none rounded-xl py-md px-lg focus:ring-2 focus:ring-primary-container focus:bg-white transition-all outline-none font-body-md placeholder-secondary-fixed-dim resize-none" placeholder="e.g. Ring the bell, leave at the door..." rows="3"></textarea>
+</div>
+</form>
+</section>
+<!-- RIGHT: Price & Payment (3D Floating) -->
+<section class="lg:col-span-3">
+<div class="glass-panel-heavy rounded-xl p-lg flex flex-col transform hover:-translate-y-2 transition-transform duration-500 relative z-10">
+<!-- Top subtle highlight for 3D effect -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white to-transparent opacity-50 rounded-t-xl"></div>
+<h2 class="text-headline-md font-headline-md text-on-surface mb-md">Payment</h2>
+<!-- Payment Methods -->
+<div class="flex flex-col gap-sm mb-lg">
+<label class="flex items-center justify-between p-sm border-2 border-primary-container bg-primary-fixed/20 rounded-lg cursor-pointer transition-all">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary-container" data-icon="payments">payments</span>
+<span class="text-label-md font-label-md text-on-surface">Cash on Delivery</span>
+</div>
+<input checked="" class="text-primary-container focus:ring-primary-container w-5 h-5 border-outline-variant" name="payment" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-sm border-2 border-transparent hover:border-outline-variant hover:bg-surface-container-high rounded-lg cursor-pointer transition-all">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary" data-icon="phone_iphone">phone_iphone</span>
+<span class="text-label-md font-label-md text-on-surface">bKash</span>
+</div>
+<input class="text-primary-container focus:ring-primary-container w-5 h-5 border-outline-variant" name="payment" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-sm border-2 border-transparent hover:border-outline-variant hover:bg-surface-container-high rounded-lg cursor-pointer transition-all">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary" data-icon="credit_card">credit_card</span>
+<span class="text-label-md font-label-md text-on-surface">Credit/Debit Card</span>
+</div>
+<input class="text-primary-container focus:ring-primary-container w-5 h-5 border-outline-variant" name="payment" type="radio"/>
+</label>
+</div>
+<!-- Summary Breakdown -->
+<div class="space-y-sm mb-lg border-t border-b border-outline-variant py-md">
+<div class="flex justify-between text-body-md font-body-md text-secondary">
+<span>Subtotal</span>
+<span class="text-on-surface">৳880</span>
+</div>
+<div class="flex justify-between text-body-md font-body-md text-secondary">
+<span>Delivery Fee</span>
+<span class="text-on-surface">৳60</span>
+</div>
+<div class="flex justify-between text-body-md font-body-md text-tertiary-container">
+<span>Discount (Promo)</span>
+<span>-৳50</span>
+</div>
+</div>
+<!-- Total -->
+<div class="flex justify-between items-end mb-xl">
+<span class="text-body-lg font-body-lg text-on-surface">Total</span>
+<span class="text-display-lg font-display-lg text-primary-container leading-none">৳890</span>
+</div>
+<!-- CTA Button -->
+<button class="w-full bg-gradient-to-r from-[#E91E8C] to-[#FF4D97] text-white rounded-full py-md text-headline-md font-headline-md shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 relative overflow-hidden group">
+<span class="relative z-10 flex items-center justify-center gap-sm">
+                            Place Order <span class="text-2xl">🧸</span>
+</span>
+<!-- Inner 3D stroke simulation -->
+<div class="absolute inset-0 border-[2px] border-white/20 rounded-full pointer-events-none"></div>
+<!-- Hover glow -->
+<div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+</button>
+</div>
+</section>
+</div>
+</main>
+<script>
+        // Simple JS to handle active state of payment methods
+        document.querySelectorAll('input[name="payment"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Reset all
+                document.querySelectorAll('input[name="payment"]').forEach(r => {
+                    const label = r.closest('label');
+                    label.classList.remove('border-primary-container', 'bg-primary-fixed/20');
+                    label.classList.add('border-transparent', 'hover:border-outline-variant');
+                    const icon = label.querySelector('.material-symbols-outlined');
+                    icon.classList.remove('text-primary-container');
+                    icon.classList.add('text-secondary');
+                });
+                
+                // Set active
+                if(this.checked) {
+                    const activeLabel = this.closest('label');
+                    activeLabel.classList.remove('border-transparent', 'hover:border-outline-variant');
+                    activeLabel.classList.add('border-primary-container', 'bg-primary-fixed/20');
+                    const activeIcon = activeLabel.querySelector('.material-symbols-outlined');
+                    activeIcon.classList.remove('text-secondary');
+                    activeIcon.classList.add('text-primary-container');
+                }
+            });
+        });
+    </script>
+</body></html>

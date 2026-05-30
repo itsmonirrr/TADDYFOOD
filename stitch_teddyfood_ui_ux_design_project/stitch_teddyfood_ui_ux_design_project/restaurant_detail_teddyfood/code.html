@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TEDDYFOOD - Restaurant Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#85fd6d",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#69df54",
+                        "primary-container": "#df0e84",
+                        "surface": "#fcf9f8",
+                        "on-tertiary-fixed-variant": "#035300",
+                        "surface-bright": "#fcf9f8",
+                        "on-primary-fixed-variant": "#8d0051",
+                        "on-tertiary-container": "#f8ffef",
+                        "outline-variant": "#e1bdc8",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e5e2e1",
+                        "inverse-surface": "#313030",
+                        "on-secondary-fixed": "#21191f",
+                        "primary": "#b30069",
+                        "secondary": "#665b62",
+                        "secondary-fixed": "#eddfe6",
+                        "surface-container": "#f0eded",
+                        "surface-dim": "#dcd9d9",
+                        "on-tertiary-fixed": "#012200",
+                        "surface-tint": "#b8006c",
+                        "background": "#fcf9f8",
+                        "primary-fixed-dim": "#ffb0cc",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#594048",
+                        "on-surface": "#1c1b1b",
+                        "on-background": "#1c1b1b",
+                        "tertiary": "#046c00",
+                        "on-secondary-fixed-variant": "#4d444a",
+                        "outline": "#8d6f79",
+                        "secondary-container": "#eadce4",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#6a6066",
+                        "surface-container-high": "#eae7e7",
+                        "surface-container-low": "#f6f3f2",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#3e0021",
+                        "tertiary-container": "#068800",
+                        "inverse-primary": "#ffb0cc",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#fffbff",
+                        "surface-container-highest": "#e5e2e1",
+                        "primary-fixed": "#ffd9e4",
+                        "secondary-fixed-dim": "#d0c3ca"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "xxl": "48px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "label-sm": ["Be Vietnam Pro"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "headline-md": ["Be Vietnam Pro"],
+                        "headline-lg-mobile": ["Be Vietnam Pro"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "headline-lg": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #E91E8C 0%, #FF4D97 100%);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(233, 30, 140, 0.2), inset 0 1px 0 rgba(255,255,255,0.5);
+        }
+        .food-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .food-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(233, 30, 140, 0.15);
+            border-color: rgba(233, 30, 140, 0.3);
+        }
+        .food-card:hover img {
+            transform: scale(1.05) translateY(-5px);
+        }
+        .food-img {
+            transition: transform 0.4s ease;
+            filter: drop-shadow(0 15px 15px rgba(0,0,0,0.15));
+        }
+        .nav-item-active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background-color: theme('colors.primary');
+            border-radius: 50%;
+            box-shadow: 0 0 10px theme('colors.primary');
+        }
+        .nav-item-active {
+            background: linear-gradient(to top, rgba(233, 30, 140, 0.05), transparent);
+        }
+        
+        /* Custom Scrollbar for Cart */
+        .cart-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .cart-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .cart-scroll::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant');
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter py-md max-w-container-max mx-auto bg-white/70 dark:bg-inverse-surface/70 backdrop-blur-md border-b border-white/20 dark:border-white/10 shadow-md shadow-primary/5">
+<div class="flex items-center gap-4">
+<span class="text-headline-lg font-display-lg font-extrabold text-primary dark:text-primary-fixed cursor-pointer">TEDDYFOOD</span>
+</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary pb-1 relative nav-item-active font-label-md text-label-md px-2 pt-2" href="#">Restaurants</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors font-label-md text-label-md hover:scale-105 duration-300" href="#">Offers</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors font-label-md text-label-md hover:scale-105 duration-300" href="#">Help</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors hover:scale-105 duration-300">
+<span class="material-symbols-outlined text-[24px]">location_on</span>
+</button>
+<button class="text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors hover:scale-105 duration-300 relative">
+<span class="material-symbols-outlined text-[24px]">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">2</span>
+</button>
+<button class="hidden md:block font-label-md text-label-md text-primary font-bold hover:scale-105 transition-all duration-300">Sign In</button>
+<img alt="Profile" class="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover" data-alt="A small, circular profile picture showing a person's face." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhEisxWrlR3wEVeuzXE_JjjjyvMozPrGuLWhH0Mc_DK_HBqOGd4LxfmAZvbkpYSDMzBBugPysaAuNcmDYOT2OvVo5aogILDi_Z05u2Tr88pQmTDhi3GV75XxBQh9yowJ76ci_-Bkn-bA67f1reMnFCXxtG45YmpGAj1BLcZqvUtRsdllO4XhJ9jpC0fyGCQ66OjY52DJsFXuB7EChmpJDjgfrYJv8gSdpKWLqumeI5XPgIKa9N_AT_3nRIs1Gn-8Bvo4ekzbAKLWQ"/>
+</div>
+</header>
+<main class="flex-grow pt-[88px]">
+<!-- Hero Section -->
+<section class="relative w-full h-[300px] md:h-[400px] overflow-hidden">
+<img alt="Restaurant Hero Image" class="w-full h-full object-cover" data-alt="A high-quality, professional photograph of a premium burger restaurant interior or a stunning close-up of a gourmet burger. The lighting is warm and inviting, showcasing the textures of the food or the modern, slightly industrial decor of the eatery. It feels premium, clean, and appetizing, fitting perfectly into a light-mode, high-end food delivery app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBACJrSz0IR6yVUENF_Gf7cN4z93CS-EjaGPXjLQhNFUv1XqT3FneszQla1RhU3trdxmLLp3YKfhQX2hkIRgsJ5XlfvYsdKhlK47JJRxCjM0hHF0fQ_R8i9cqGcJ0PBEqdyZ4mI68rnG42oMSFCJ87w2WtcvHyEJ7VArllt12UA0zNq19fnqpPm_WQNZwgmtTsT7JbQ_PUgdLQC459a-SAo71Tv32ytElwSNQgoJOJcpZWlI581UrqtKnHcRL9u0EQYrB_6l_p_1mg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full px-gutter pb-xl max-w-container-max mx-auto flex items-end">
+<div class="glass-panel p-lg rounded-xl flex flex-col md:flex-row gap-lg items-start md:items-center w-full transform translate-y-1/2 mt-[-50px]">
+<div class="flex-grow">
+<h1 class="text-headline-lg font-headline-lg text-on-surface mb-xs">The Burger Joint</h1>
+<div class="flex flex-wrap gap-4 text-label-sm font-label-sm text-on-surface-variant items-center">
+<span class="flex items-center gap-1 bg-surface-container py-1 px-3 rounded-full"><span class="material-symbols-outlined text-[16px] text-[#FFB800] fill-current" style="font-variation-settings: 'FILL' 1;">star</span> 4.5 (500+)</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 25-35 min</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span> ৳200 Min</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">two_wheeler</span> ৳40 Fee</span>
+<div class="flex gap-2 ml-2">
+<span class="bg-surface-container-low px-2 py-1 rounded text-xs">American</span>
+<span class="bg-surface-container-low px-2 py-1 rounded text-xs">Burger</span>
+</div>
+</div>
+</div>
+<button class="btn-primary text-on-primary font-label-md text-label-md px-6 py-3 rounded-full flex items-center gap-2 flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">favorite</span> Save
+                    </button>
+</div>
+</div>
+</section>
+<!-- Main Content Grid -->
+<div class="max-w-container-max mx-auto px-gutter mt-xxl pt-xl grid grid-cols-1 lg:grid-cols-12 gap-gutter relative">
+<!-- Left Sidebar Navigation -->
+<aside class="hidden lg:block lg:col-span-2">
+<div class="sticky top-[120px] glass-panel rounded-xl p-md">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-md">Menu</h3>
+<ul class="flex flex-col gap-2">
+<li>
+<a class="block px-4 py-3 rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md shadow-sm transition-all hover:scale-105" href="#">
+                                Recommended
+                            </a>
+</li>
+<li>
+<a class="block px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-primary font-body-md text-body-md transition-all" href="#">
+                                Chicken
+                            </a>
+</li>
+<li>
+<a class="block px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-primary font-body-md text-body-md transition-all" href="#">
+                                Rice
+                            </a>
+</li>
+<li>
+<a class="block px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-primary font-body-md text-body-md transition-all" href="#">
+                                Burgers
+                            </a>
+</li>
+<li>
+<a class="block px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-primary font-body-md text-body-md transition-all" href="#">
+                                Drinks
+                            </a>
+</li>
+<li>
+<a class="block px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-primary font-body-md text-body-md transition-all" href="#">
+                                Desserts
+                            </a>
+</li>
+</ul>
+</div>
+</aside>
+<!-- Center Menu Grid -->
+<div class="col-span-1 lg:col-span-7 pb-xxl">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-lg">Recommended</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-lg">
+<!-- Food Item Card 1 -->
+<div class="food-card glass-panel rounded-xl p-md flex flex-col relative mt-8 pt-12">
+<div class="absolute -top-12 left-1/2 transform -translate-x-1/2 w-32 h-32 z-10">
+<img alt="Classic Cheeseburger" class="food-img w-full h-full object-cover rounded-full shadow-lg border-4 border-white" data-alt="A high-quality, isolated 3D-style photograph of a mouth-watering classic cheeseburger. The burger is perfectly built with a glossy brioche bun, melted cheese, crisp lettuce, and a juicy patty. It has a premium, appetizing look with soft, directional lighting that enhances its depth, fitting perfectly into a modern, light-mode food delivery interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV_2KIPTDiu-RfyHHO2UwX3NP7oG0r4QFr8c4c4McI8uYbBeYCBwWRyeWI2Jl144kI4-ec48Dx2KdFR3snDQ-Sm9z_FpbHFKYGg3V2AJ1xiYOVmrKC3XAoDYB3CpAYqAOtmg6q9wfyCTxZtR-d5QgkcIkz5aIdW-0uecYk-kf-lP7PsidzHFRmybOJ0ZGCda0dUy7nLragnMM40syK2BiFt6laVGaccFYISSJAHNrD_JyV4wvrCKFErJely1XqFx9J5nqCzM6Aso0"/>
+</div>
+<div class="mt-4 flex-grow text-center">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Classic Teddy Burger</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm line-clamp-2 mb-md">Our signature beef patty, melted cheddar, fresh lettuce, tomato, and Teddy's special sauce.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-headline-md text-[20px] text-primary font-bold">৳ 450</span>
+<button class="btn-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Food Item Card 2 -->
+<div class="food-card glass-panel rounded-xl p-md flex flex-col relative mt-8 pt-12">
+<div class="absolute -top-12 left-1/2 transform -translate-x-1/2 w-32 h-32 z-10">
+<img alt="Crispy Chicken Burger" class="food-img w-full h-full object-cover rounded-full shadow-lg border-4 border-white" data-alt="A stunning, highly detailed 3D-style render or macro photograph of a crispy fried chicken sandwich. The golden-brown breading looks incredibly crunchy, contrasting with creamy mayo and pickles. The lighting is bright and clean, creating a sense of premium quality and indulgence, ideal for a high-end food delivery app's light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANANqVT9PrLc8LA-wx6P6QbHmLo0JLrciOPVb6UUJ1C6Tcl9IdYxGfFtmai0QI70wnrtaXt5e2lU7BPWETqTwMPxn7lKyZ9KlBGLO4kI8RtLkUxC61yGW98gXKZmP3LlobQj5bbPIElnSolhrNdrsUK_mCOaav3KTOoXbWIIZIL2HuUnunedhGmeKgaCuZUydItW3CxbIM23oIK5pX_vg6um0T_5VZLqDirkrNIGbxO5xqnz19aPXIkEV8NlxfZvR-09mFkU1fW94"/>
+</div>
+<div class="mt-4 flex-grow text-center">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Crunchy Cluck</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm line-clamp-2 mb-md">Crispy fried chicken breast, spicy mayo, pickles, and crisp slaw on a toasted bun.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-headline-md text-[20px] text-primary font-bold">৳ 380</span>
+<button class="btn-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Food Item Card 3 -->
+<div class="food-card glass-panel rounded-xl p-md flex flex-col relative mt-8 pt-12">
+<div class="absolute -top-12 left-1/2 transform -translate-x-1/2 w-32 h-32 z-10">
+<img alt="Loaded Fries" class="food-img w-full h-full object-cover rounded-full shadow-lg border-4 border-white" data-alt="An appetizing, high-resolution image of a generous portion of loaded French fries, piled high with melted cheese sauce, crispy bacon bits, and jalapeños. It looks like a premium, indulgent side dish. The lighting is soft but vibrant, emphasizing the textures and colors against a bright, minimalist background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtUwR8EYhZuPaQVcoYcjZd_zb_-IYw6-gvKc0QmhpIXET9sH7WZlX7B1lRCKauYdPowes_mFUgR9cOrpDdeFurkQmCEinX_-uSdu2cxOjWgUAUkQFvvcHL0SjGwy8l7UaYf6nQ3edE4UQjQ-XXrZoVVy2b3XQibc-dquQ9qgvaxYQvricRYPRIXfPvB7kqO3wGapsvY292_qnsU9nqhPQQwOAwlCxHoN650t63UE1i8x5CV-38TroKwhIddCthiVDlMv-pqg67I1c"/>
+</div>
+<div class="mt-4 flex-grow text-center">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Teddy's Loaded Fries</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm line-clamp-2 mb-md">Crispy golden fries smothered in warm cheese sauce, bacon crumbles, and jalapeños.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-headline-md text-[20px] text-primary font-bold">৳ 250</span>
+<button class="btn-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Food Item Card 4 -->
+<div class="food-card glass-panel rounded-xl p-md flex flex-col relative mt-8 pt-12">
+<div class="absolute -top-12 left-1/2 transform -translate-x-1/2 w-32 h-32 z-10">
+<img alt="Strawberry Shake" class="food-img w-full h-full object-cover rounded-full shadow-lg border-4 border-white" data-alt="A beautiful, vibrant 3D-style photograph of a tall glass of thick strawberry milkshake topped with a generous swirl of whipped cream and a cherry. The drink is vibrant pink, looking cold and refreshing. The lighting is high-key and pristine, perfect for a modern, cheerful food delivery interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0EDYJcTyOq1bEirH9s1wg-JD0_G0JsSsX4PypgsQXxMPqKvxDum00JRYDXLzVF3dx-61x92B6LnRI-j_HJwbVhzqMocR45NDcT7dkerdJv9-Itzsvs14BgpcJxeP41Azph0-CzTRyyVZ5XTVgrokzz7UTJqVyFhcZdTwh1PWXQpb_wOcj-3289kuFONaz8mdKU0dLgTjTe9Zzo5nH7uzhQbMukrVDbHosecD0BFCeYgYMxsRh8_z2oCuR59Xsg4Y0tess1_Qj-5c"/>
+</div>
+<div class="mt-4 flex-grow text-center">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Berry Blast Shake</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm line-clamp-2 mb-md">Thick and creamy strawberry milkshake topped with whipped cream and a cherry.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-headline-md text-[20px] text-primary font-bold">৳ 180</span>
+<button class="btn-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar Cart -->
+<aside class="col-span-1 lg:col-span-3">
+<div class="sticky top-[120px] glass-panel rounded-xl p-md flex flex-col h-[calc(100vh-160px)]">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[28px]">shopping_bag</span> 
+                        Your Order
+                    </h3>
+<div class="flex-grow overflow-y-auto cart-scroll pr-2">
+<!-- Cart Item 1 -->
+<div class="flex items-center gap-3 mb-4 pb-4 border-b border-outline-variant/50">
+<img alt="Item" class="w-12 h-12 rounded-lg object-cover" data-alt="Small thumbnail image of a classic cheeseburger." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdc6UkQKcgpHry5XJzKmjdroGLtVhfx76N8ClfYwJXcT-ttDqmvw9sJPoNnNsCcwdaNBWlv4_t3JuGn4DoaPSR3XZpNnKbyXAtWe-s2oz3ud2LZ8G0i3k7vRlGuSyt0U17PHueQiRwyPZwqN_XlpzSSLflfsSeAzKROcOjGzsMCy9tLYwqM-TYPlaLsZJrCmKvh0sKJ_lcDRsBSA9yqDiCZGAX6HC09tDDLSScweuYkiTiN1meyu4N0Oii9Qp0HSWCeQ8zCwTi3gs"/>
+<div class="flex-grow">
+<h4 class="font-label-md text-label-md text-on-surface line-clamp-1">Classic Teddy Burger</h4>
+<span class="font-body-md text-body-md text-primary font-bold text-sm">৳ 450</span>
+</div>
+<div class="flex items-center bg-surface-container rounded-full px-2 py-1">
+<button class="text-secondary hover:text-primary"><span class="material-symbols-outlined text-[16px]">remove</span></button>
+<span class="font-label-md text-label-md mx-2">1</span>
+<button class="text-secondary hover:text-primary"><span class="material-symbols-outlined text-[16px]">add</span></button>
+</div>
+</div>
+<!-- Cart Item 2 -->
+<div class="flex items-center gap-3 mb-4 pb-4 border-b border-outline-variant/50">
+<img alt="Item" class="w-12 h-12 rounded-lg object-cover" data-alt="Small thumbnail image of loaded fries." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCdEPOO_TY-3sodnSr4t8saoNl5Q-j--1p6xta3aLVwVrrxJjyTfzBzppUCDYaWRmVp6OZB0rJezSpgutOFuMTTc8-nv3lDEaPuscA66wkEMpJtJ4niz6JCtCisKTLv_eMtpPRjxK1I3eSYsY2CEY8mSAlLN9EoMTwzArlqVssyh0gUOOiloJrRwA0yWGu1mJob6SwBa6w7poSPVAwFzsy0lfwTkjTCjUs0dEKXLuQGDwdBsLuWsINXGgL23BWTcT0TPFu168WKaU"/>
+<div class="flex-grow">
+<h4 class="font-label-md text-label-md text-on-surface line-clamp-1">Teddy's Loaded Fries</h4>
+<span class="font-body-md text-body-md text-primary font-bold text-sm">৳ 250</span>
+</div>
+<div class="flex items-center bg-surface-container rounded-full px-2 py-1">
+<button class="text-secondary hover:text-primary"><span class="material-symbols-outlined text-[16px]">remove</span></button>
+<span class="font-label-md text-label-md mx-2">1</span>
+<button class="text-secondary hover:text-primary"><span class="material-symbols-outlined text-[16px]">add</span></button>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t-2 border-outline-variant/50">
+<div class="flex justify-between items-center mb-2">
+<span class="font-body-md text-body-md text-on-surface-variant">Subtotal</span>
+<span class="font-label-md text-label-md text-on-surface">৳ 700</span>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="font-body-md text-body-md text-on-surface-variant">Delivery Fee</span>
+<span class="font-label-md text-label-md text-on-surface">৳ 40</span>
+</div>
+<div class="flex justify-between items-center mb-6">
+<span class="font-headline-md text-[20px] text-on-surface font-bold">Total</span>
+<span class="font-headline-md text-[24px] text-primary font-bold">৳ 740</span>
+</div>
+<button class="btn-primary w-full text-on-primary font-headline-md text-headline-md py-4 rounded-xl flex items-center justify-center gap-2">
+                            Go to Checkout <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl px-gutter grid grid-cols-1 md:grid-cols-4 gap-lg max-w-container-max mx-auto bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant full-width mt-xxl">
+<div class="col-span-1 md:col-span-4 mb-lg">
+<span class="text-headline-md font-display-lg font-black text-on-surface dark:text-on-background">TEDDYFOOD</span>
+</div>
+<div class="flex flex-col gap-2">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary hover:underline transition-all font-label-sm text-label-sm" href="#">About Us</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary hover:underline transition-all font-label-sm text-label-sm" href="#">Partner with Us</a>
+</div>
+<div class="flex flex-col gap-2">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary hover:underline transition-all font-label-sm text-label-sm" href="#">Terms of Service</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary hover:underline transition-all font-label-sm text-label-sm" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col gap-2">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary hover:underline transition-all font-label-sm text-label-sm" href="#">Contact Support</a>
+</div>
+<div class="col-span-1 md:col-span-4 mt-lg pt-lg border-t border-outline-variant/30 text-center">
+<p class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md">© 2024 TEDDYFOOD. All rights reserved. Delighting you with every bite.</p>
+</div>
+</footer>
+</body></html>
