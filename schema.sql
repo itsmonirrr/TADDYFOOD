@@ -253,3 +253,31 @@ CREATE POLICY "Allow admins full access to admin accounts"
 
 -- Enable Replication for Realtime order tracking
 alter publication supabase_realtime add table orders;
+
+-- 10. ADMIN PASSWORD RESET OTP TABLE
+CREATE TABLE IF NOT EXISTS admin_otp (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  username TEXT NOT NULL,
+  otp TEXT NOT NULL,
+  expires_at TIMESTAMP NOT NULL,
+  used BOOLEAN DEFAULT false,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Enable Row Level Security (RLS) on admin_otp
+ALTER TABLE admin_otp ENABLE ROW LEVEL SECURITY;
+
+-- Allow public operations for the anonymous OTP verification flow
+CREATE POLICY "Allow public select on admin_otp" 
+  ON admin_otp FOR SELECT USING (true);
+
+CREATE POLICY "Allow public insert on admin_otp" 
+  ON admin_otp FOR INSERT WITH CHECK (true);
+
+CREATE POLICY "Allow public update on admin_otp" 
+  ON admin_otp FOR UPDATE USING (true);
+
+-- Allow public update on admin_accounts specifically for password reset
+CREATE POLICY "Allow public update on admin accounts" 
+  ON admin_accounts FOR UPDATE USING (true);
+
